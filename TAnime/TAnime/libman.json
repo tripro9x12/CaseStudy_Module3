@@ -13,6 +13,14 @@
     {
         "library": "datatables@1.10.21",
         "destination": "wwwroot/lib/datatables/"
+    },
+    {
+        "library": "jquery-easing@1.4.1",
+        "destination": "wwwroot/lib/jquery-easing/"
+    },
+    {
+        "library": "Chart.js@2.9.3",
+        "destination": "wwwroot/lib/chart/"
     }
   ]
 }
