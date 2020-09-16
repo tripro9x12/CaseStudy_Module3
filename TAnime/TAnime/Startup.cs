@@ -10,7 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TAnime.Models;
+using TAnime.Repositories;
 using TAnime.Services;
+using TAnime.Services_Repository;
 
 namespace TAnime
 {
@@ -31,6 +33,9 @@ namespace TAnime
                             option.EnableEndpointRouting = false);
             services.AddDbContext<AppDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("TAnimeDbManagement")));
             services.AddScoped<IAnimeService, AnimeService>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IEpisodeRepository, EpisodeRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

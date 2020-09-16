@@ -478,3 +478,5 @@ D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\S
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\libman.json
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Category\Index.cshtml.g.cs
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Home\_ViewStart.cshtml.g.cs
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Category\Create.cshtml.g.cs
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Category\Edit.cshtml.g.cs

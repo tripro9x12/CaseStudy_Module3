@@ -50,9 +50,16 @@ namespace TAnime.Services_Repository
             return context.Categories.FirstOrDefault(c=>c.CategoryId == id);
         }
 
-        public IEnumerable<Category> Gets()
+        public IEnumerable<CategoryViewModel> Gets()
         {
-            return context.Categories;
+            IEnumerable<CategoryViewModel> models = new List<CategoryViewModel>();
+            models = from c in context.Categories
+                    select (new CategoryViewModel()
+                    {
+                        CategoryId = c.CategoryId,
+                        categoryName = c.categoryName
+                    });
+            return models;
         }
     }
 }

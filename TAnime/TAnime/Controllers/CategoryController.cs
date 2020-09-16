@@ -19,13 +19,7 @@ namespace TAnime.Controllers
         }
         public IActionResult Index()
         {
-            IEnumerable<CategoryViewModel> categories = new List<CategoryViewModel>();
-            categories = from c in categoryRepository.Gets()
-                         select (new CategoryViewModel()
-                         {
-                             CategoryId = c.CategoryId,
-                             categoryName = c.categoryName
-                         });
+            var categories = categoryRepository.Gets().ToList();
             return View(categories);
         }
         [HttpGet]
@@ -38,16 +32,62 @@ namespace TAnime.Controllers
         {
             if (ModelState.IsValid)
             {
-                var category = new Category() {
+                var categories = categoryRepository.Gets().ToList();
+                foreach (var name in categories)
+                {
+                   if(name.categoryName == model.categoryName)
+                    {
+                        ModelState.AddModelError("", "tên đã tồn tại");
+                        return View();
+                    }
+                }
+                var category = new Category()
+                {
                     categoryName = model.categoryName
                 };
                 var result = categoryRepository.CreateCategory(category);
+                if (result > 0)
+                {
+                    return RedirectToAction("Index", "Category");
+                }
+            }
+            return View(model);
+        }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var category = categoryRepository.Get(id);
+            if(category == null)
+            {
+                return View();
+            }
+            var editCategory = new EditCategoryViewModel()
+            {
+                CategoryId = category.CategoryId,
+                categoryName = category.categoryName
+            };
+            return View(editCategory);
+        }
+        [HttpPost]
+        public IActionResult Edit(EditCategoryViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var categoty = categoryRepository.Get(model.CategoryId);
+                categoty.categoryName = model.categoryName;
+                var result = categoryRepository.EditCategory(categoty);
                 if(result > 0)
                 {
                     return RedirectToAction("Index", "Category");
                 }
             }
             return View(model);
+        }
+        [Route("Category/Delete/{CategoryId}")]
+        public IActionResult Delete(int CategoryId)
+        {
+            var delCategory = categoryRepository.DeleteCategory(CategoryId);
+            return Json(new {delCategory });
         }
     }
 }

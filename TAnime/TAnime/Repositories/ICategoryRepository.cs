@@ -9,7 +9,7 @@ namespace TAnime.Services_Repository
 {
     public interface ICategoryRepository
     {
-        IEnumerable<Category> Gets();
+        IEnumerable<CategoryViewModel> Gets();
         Category Get(int id);
         int CreateCategory(Category model);
         int EditCategory(Category model);

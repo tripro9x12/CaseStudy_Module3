@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using TAnime.Models.Entities;
 
-namespace TAnime.Models.Entities
+namespace TAnime.Models.ViewModels.Movies
 {
-    public class Movie
+    public class MovieViewModel
     {
         public int MovieId { get; set; }
-        [MaxLength(300)]
-        [Required]
         public string MovieName { get; set; }
         public string Content { get; set; }
-        [MaxLength(300)]
         public string ImageOfVideo { get; set; }
         public string Country { get; set; }
-        public ICollection<MovieCategory> movieCategories { get; set; }
-        public ICollection<Episode> Episode { get; set; }
+        public List<MovieCategoryViewModel> MovieCategories { get; set; }
+        public List<Episode> Episodes { get; set; }
     }
 }
