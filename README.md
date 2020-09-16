@@ -15,7 +15,7 @@
 ⌨ Các ngôn ngữ sử dụng trong dự án:
 HTML, CSS, Javascript, Ajax,Bootstrap 4, ASP.NetCore, ASP.NETMVC, EntityFramework, IdentityFramework.
 
-⭐️ Người đóng góp, giúp đỡ trong quá trình thực hiện dự án: Anh Vinh - Chi Lăng
+⭐️ Người đóng góp, giúp đỡ trong quá trình thực hiện dự án: Anh Vinh - Chi Lăng （Tutor Codegym Huế）
 
 👨 Nếu có ý kiến đóng góp cho dự án, vui lòng gửi về địa chỉ hòm thư :
 
