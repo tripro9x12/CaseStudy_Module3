@@ -83,11 +83,6 @@ namespace TAnime.Services
             return movies;
         }
 
-        public MovieViewModel GetMovieViewModle(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public Movie GetMovie(int id)
         {
             return context.Movies.FirstOrDefault(m => m.MovieId == id);

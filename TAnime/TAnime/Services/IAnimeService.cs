@@ -10,7 +10,7 @@ namespace TAnime.Services
     public interface IAnimeService
     {
         IEnumerable<MovieViewModel> GetMovies();
-        MovieViewModel GetMovieViewModle(int id);
+        MovieViewModel GetMovieViewModel(int id);
         Movie GetMovie(int id);
         int CreateMovie(Movie movie);
         int EditMovie(Movie movie);
