@@ -34,23 +34,12 @@ div ul .input-group.md-form.form-sm.form-2 span {
 #nav-menu{
     background: #314241;
 }
-    #nav-menu .menu ul{
-        position: relative;
-    }
-    #nav-menu .menu ul li {
-        width: auto;
-        padding: 0 10px;
-    }
-#nav-menu .menu ul li a{
-    color: white;
+#nav-menu #menu #menu-item li{
+    position: relative;
 }
-#nav-menu .menu ul li a:hover {
-    text-decoration: none;
+#nav-menu #menu #menu-item li a {
+    color: white !important;
 }
-#nav-menu .menu ul li>.sub-menu{
-    display: none;
+#menu li a:hover {
+    text-decoration: none !important;
 }
-    #nav-menu .menu ul li .sub-menu:hover > ul {
-        display: block;
-       
-    }

@@ -30,24 +30,23 @@
             </div>
         </nav>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3" id="nav-menu">
-            <div class="container">
+            <div class="container" id="menu">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon text-white"></span>
                 </button>
-                <div class="collapse navbar-collapse float-left menu">
-                    <ul class="navbar-nav d-inline-flex text-white">
+                <div class="collapse navbar-collapse float-left">
+                    <ul class="navbar-nav d-inline-flex text-white" id="menu-item">
                         <li><a asp-controller="Home" asp-action="Index">Trang Chủ</a></li>
                         <li>
-                            Anime<i class="fa fa-caret-down ml-2"></i>
-                            <div class="sub-menu">
-                                <ul class="d-block">
-                                    <li><a href="">Âm Nhạc</a></li>
-                                    <li><a href="">Drama</a></li>
-                                    <li><a href="">Đời thường</a></li>
-                                </ul>
-                            </div>
+                            Anime<i class="fa fa-caret-down ml-1"></i>
+                            <ul class="sub-menu">
+                                <li><a href="">Âm Nhạc</a></li>
+                                <li><a href="">Drama</a></li>
+                                <li><a href="">Đời thường</a></li>
+                            </ul>
                         </li>
+                        <li>a</li>
                     </ul>
                 </div>
             </div>

@@ -1,0 +1,31 @@
+﻿@model List<CategoryViewModel>
+@{
+    ViewBag.Title = "List Category";
+}
+<h3>@ViewBag.Title</h3>
+<a asp-controller="Category" asp-action="Create" class="btn btn-warning" style="width:auto !important;">Create Category</a>
+<table class="table table-bordered table-hover mt-2">
+    <thead>
+        <tr class="bg-dark text-light">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var category in Model)
+            {
+                <tr>
+                    <td>@category.CategoryId</td>
+                    <td>@category.categoryName</td>
+                    <td>
+                        <a asp-controller="Role" asp-action="Edit" asp-route-id="@category.CategoryId" class="btn btn-warning">Edit</a>
+                        <a asp-controller="Role" asp-action="Edit" asp-route-id="@category.CategoryId" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
