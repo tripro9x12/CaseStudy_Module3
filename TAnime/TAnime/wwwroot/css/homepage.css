@@ -1,0 +1,56 @@
+﻿header {
+    background: #21222f;
+}
+header nav{
+    line-height: 40px;
+}
+.logo {
+    font-size: 30px !important;
+    color: red !important;
+    text-shadow: 1px 1px #fff !important;
+}
+.logo:first-letter{
+    font-size: 40px !important;
+}
+.logo:hover {
+    color: red !important;
+}
+div ul{
+    width: 50%;
+}
+div ul .input-group.md-form.form-sm.form-2 input[type="text"] {
+    border: 2px solid #009688 !important;
+    outline: 0 !important;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    width: 50%;
+}
+div ul .input-group.md-form.form-sm.form-2 span {
+    border: 2px solid #009688 !important;
+    outline: 0 !important;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+}
+#nav-menu{
+    background: #314241;
+}
+    #nav-menu .menu ul{
+        position: relative;
+    }
+    #nav-menu .menu ul li {
+        width: auto;
+        padding: 0 10px;
+    }
+#nav-menu .menu ul li a{
+    color: white;
+}
+#nav-menu .menu ul li a:hover {
+    text-decoration: none;
+}
+#nav-menu .menu ul li>.sub-menu{
+    display: none;
+}
+    #nav-menu .menu ul li .sub-menu:hover > ul {
+        display: block;
+       
+    }

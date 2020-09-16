@@ -12,6 +12,6 @@ namespace TAnime.Models.Entities
         [Required]
         [MaxLength(200)]
         public string categoryName { get; set; }
-        public IEnumerable<Movie> Movies { get; set; }
+        public ICollection<MovieCategory> movieCategories { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TAnime.Services
 {
-    public class IAnimeService
+    public interface IAnimeService
     {
 
     }
