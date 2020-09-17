@@ -68,6 +68,7 @@ namespace TAnime.Services
                                   });
             movies = (from m in context.Movies
                       join e in context.Episodes on m.MovieId equals e._MovieId
+                      join ct in context.Countries on m._CountryId equals ct.CountryId
                       join mc in context.MovieCategories on m.MovieId equals mc.MovieId
                       join c in context.Categories on mc.CategoryId equals c.CategoryId
                       select (new MovieViewModel()
@@ -75,7 +76,7 @@ namespace TAnime.Services
                           MovieId = m.MovieId,
                           MovieName = m.MovieName,
                           Content = m.Content,
-                          Country = m.Country,
+                          Country = ct.CountryName,
                           ImageOfVideo = m.ImageOfVideo,
                           Episodes = episode.ToList(),
                           MovieCategories = movieCategories.ToList()
@@ -87,5 +88,6 @@ namespace TAnime.Services
         {
             return context.Movies.FirstOrDefault(m => m.MovieId == id);
         }
+
     }
 }

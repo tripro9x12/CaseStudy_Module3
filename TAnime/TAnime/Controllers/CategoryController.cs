@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TAnime.Models.Entities;
-using TAnime.Models.ViewModels.Category;
+using TAnime.Models.ViewModels.Categories;
 using TAnime.Services_Repository;
 
 namespace TAnime.Controllers

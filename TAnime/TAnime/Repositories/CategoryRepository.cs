@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TAnime.Models;
 using TAnime.Models.Entities;
-using TAnime.Models.ViewModels.Category;
+using TAnime.Models.ViewModels.Categories;
 
 namespace TAnime.Services_Repository
 {

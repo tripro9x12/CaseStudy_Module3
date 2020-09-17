@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TAnime.Models;
 
 namespace TAnime.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200917015857_CreateColumnTimeInMovieTable")]
+    partial class CreateColumnTimeInMovieTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,23 +36,6 @@ namespace TAnime.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("TAnime.Models.Entities.Country", b =>
-                {
-                    b.Property<int>("CountryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CountryName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
-                    b.HasKey("CountryId");
-
-                    b.ToTable("Countries");
                 });
 
             modelBuilder.Entity("TAnime.Models.Entities.Episode", b =>
@@ -89,6 +74,9 @@ namespace TAnime.Migrations
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ImageOfVideo")
                         .HasColumnType("nvarchar(300)")
                         .HasMaxLength(300);
@@ -101,12 +89,7 @@ namespace TAnime.Migrations
                     b.Property<DateTime>("Time")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("_CountryId")
-                        .HasColumnType("int");
-
                     b.HasKey("MovieId");
-
-                    b.HasIndex("_CountryId");
 
                     b.ToTable("Movies");
                 });
@@ -131,15 +114,6 @@ namespace TAnime.Migrations
                     b.HasOne("TAnime.Models.Entities.Movie", "_Movie")
                         .WithMany("Episode")
                         .HasForeignKey("_MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("TAnime.Models.Entities.Movie", b =>
-                {
-                    b.HasOne("TAnime.Models.Entities.Country", "_Country")
-                        .WithMany("movies")
-                        .HasForeignKey("_CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

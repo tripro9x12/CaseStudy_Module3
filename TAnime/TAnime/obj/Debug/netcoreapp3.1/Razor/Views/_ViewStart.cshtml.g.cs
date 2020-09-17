@@ -35,13 +35,20 @@ using TAnime.Models.Entities;
 #nullable disable
 #nullable restore
 #line 4 "D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\Views\_ViewImports.cshtml"
-using TAnime.Models.ViewModels.Category;
+using TAnime.Models.ViewModels.Categories;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\Views\_ViewImports.cshtml"
+using TAnime.Models.ViewModels.Movies;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"37af4957909b4a97b14c8799cc31703c7d6faa82", @"/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"17c07c0ebd3266d78ceb42033f7727452645a0bd", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8169c7748332c7a52515bb1cd4f14a45c289abb3", @"/Views/_ViewImports.cshtml")]
     public class Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

@@ -15,8 +15,11 @@ namespace TAnime.Models.Entities
         public string Content { get; set; }
         [MaxLength(300)]
         public string ImageOfVideo { get; set; }
-        public string Country { get; set; }
+        [DataType(DataType.Time)]
+        public DateTime Time { get; set; }
         public ICollection<MovieCategory> movieCategories { get; set; }
         public ICollection<Episode> Episode { get; set; }
+        public int _CountryId { get; set; }
+        public Country _Country { get; set; }
     }
 }

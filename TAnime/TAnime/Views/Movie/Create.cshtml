@@ -1,0 +1,103 @@
+﻿@model CreateMovieViewModel
+@inject AppDbContext context
+@{
+    ViewBag.Title = "Thêm phim";
+    var Categories = ViewBag.Categories as List<CategoryViewModel>;
+}
+<div class="container">
+    <form enctype="multipart/form-data" asp-controller="Movie" asp-action="Create" method="post" class="mt-2">
+        <div class="row">
+            <div class="col-sm-2 form-group">
+                <label asp-for="MovieName"></label>
+            </div>
+            <div class="col-sm-10 form-group">
+                <input type="text" asp-for="MovieName" class="form-control" />
+                <span asp-validation-for="MovieName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 form-group">
+                <label asp-for="Content"></label>
+            </div>
+            <div class="col-sm-10 form-group">
+                <textarea rows="3" asp-for="Content" class="form-control"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 form-group">
+                <label asp-for="Country"></label>
+            </div>
+            <div class="col-sm-4 form-group">
+                <select class="form-control" asp-for="Country">
+                     @foreach(var item in context.Countries)
+                     {
+                         <option value="@item.CountryId">@item.CountryName</option>
+                     }
+                </select>
+                    <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 form-group">
+                <label>Thể Loại</label>
+            </div>
+            <div class="col-sm-10 form-group">
+                @if (Categories != null)
+                {
+                    foreach (var category in Categories)
+                    {
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" name="categories" class="form-check-input" value="@category.CategoryId" /> @category.categoryName
+                            </label>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2 form-group">
+                <label asp-for="Time"></label>
+            </div>
+            <div class="col-10">
+                <input class="form-control" type="date" asp-for="Time">
+                <span asp-validation-for="Time" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 form-group">
+                <label asp-for="Image"></label>
+            </div>
+            <div class="col-sm-10 form-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" asp-for="Image">
+                    <label class="custom-file-label" for="customFile">Chọn tệp</label>
+                </div>
+                <span asp-validation-for="Image" class="text-danger"></span>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 form-group">
+
+            </div>
+            <div class="col-sm-10 form-group">
+                <button type="submit" class="btn btn-primary btnn">Thêm</button>
+                <button type="reset" class="btn btn-danger btnn">Hủy Bỏ</button>
+                <a asp-controller="Movie" asp-action="Index" class="btn btn-warning btnn">Trở Lại</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(() => {
+            $(".custom-file-input").on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            });
+        });
+    </script>
+}

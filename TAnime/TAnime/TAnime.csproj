@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <Folder Include="Models\Identities\" />
+    <Folder Include="Views\Country\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\videos\" />
   </ItemGroup>

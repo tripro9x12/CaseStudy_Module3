@@ -17,6 +17,7 @@ namespace TAnime.Models
         public DbSet<Movie> Movies { get; set; }
         public DbSet<MovieCategory> MovieCategories { get; set; }
         public DbSet<Episode> Episodes  { get; set; }
+        public DbSet<Country> Countries { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
