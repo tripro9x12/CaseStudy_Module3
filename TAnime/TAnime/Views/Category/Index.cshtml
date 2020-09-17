@@ -1,14 +1,14 @@
 ﻿@model List<CategoryViewModel>
 @{
-    ViewBag.Title = "List Category";
+    ViewBag.Title = "Danh Sách Thể Loại Phim";
 }
 <h3>@ViewBag.Title</h3>
 <table class="table table-bordered table-hover mt-2" id="tbCategory">
     <thead>
         <tr class="bg-dark text-light">
-            <th>Id</th>
-            <th>Name</th>
-            <th>Actions</th>
+            <th>#Id</th>
+            <th>Tên Thể Loại Phim</th>
+            <th>Hành Động</th>
         </tr>
     </thead>
     <tbody>
@@ -20,8 +20,8 @@
                     <td>@category.CategoryId</td>
                     <td>@category.categoryName</td>
                     <td>
-                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@category.CategoryId" class="btn btn-warning btnn">Edit</a>
-                        <a href="javascript:void(0)" class="btn btn-danger btnn" onclick="category.delete(@category.CategoryId)">Delete</a>
+                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@category.CategoryId" class="btn btn-warning btnn">Chỉnh Sửa</a>
+                        <a href="javascript:void(0)" class="btn btn-danger btnn" onclick="category.delete(@category.CategoryId)">Xóa</a>
                     </td>
                 </tr>
             }

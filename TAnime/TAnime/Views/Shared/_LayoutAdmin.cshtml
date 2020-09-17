@@ -47,14 +47,14 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Movie</span>
+                    <i class="fas fa-fw fa-film"></i>
+                    <span>Phim</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Movie</h6>
-                        <a class="collapse-item" href="buttons.html">List Movie</a>
-                        <a class="collapse-item" href="cards.html">Create Movie</a>
+                        <h6 class="collapse-header">Phim Hoạt Hình</h6>
+                        <a class="collapse-item" asp-controller="Movie" asp-action="Index">Danh Sa Phim</a>
+                        <a class="collapse-item" asp-controller="Movie" asp-action="Create">Thêm Phim</a>
                     </div>
                 </div>
             </li>
@@ -62,29 +62,42 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Category</span>
+                    <i class="fas fa-fw fa-closed-captioning"></i>
+                    <span>Thể Loại Phim</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Category:</h6>
-                        <a class="collapse-item" asp-controller="Category" asp-action="Index">List Categoty</a>
-                        <a class="collapse-item" asp-controller="Category" asp-action="Create" style="width:auto !important;">Create Category</a>
+                        <h6 class="collapse-header">Thể Loại Phim</h6>
+                        <a class="collapse-item" asp-controller="Category" asp-action="Index">Danh Sách Thể Loại</a>
+                        <a class="collapse-item" asp-controller="Category" asp-action="Create" style="width:auto !important;">Thêm Thể Loại</a>                     
+                    </div>
+                </div>
+            </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCountry" aria-expanded="true" aria-controls="collapseCountry">
+                    <i class="fas fa-fw fa-flag"></i>
+                    <span>Quốc Gia</span>
+                </a>
+                <div id="collapseCountry" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Quốc Gia</h6>
+                        <a class="collapse-item" asp-controller="Country" asp-action="Index">Danh Sách Quốc Gia</a>
+                        <a class="collapse-item" asp-controller="Country" asp-action="Create" style="width:auto !important;">Thêm Quốc Gia</a>
                     </div>
                 </div>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEpisode" aria-expanded="true" aria-controls="collapseEpisode">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Episode</span>
+                    <i class="fas fa-fw fa-file-video"></i>
+                    <span>Tập Phim</span>
                 </a>
                 <div id="collapseEpisode" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Episode:</h6>
-                        <a class="collapse-item" asp-controller="Episode" asp-action="Index">List Episode</a>
-                        <a class="collapse-item" asp-controller="Episode" asp-action="Create" style="width:auto !important;">Create Episode</a>
+                        <h6 class="collapse-header">Tập Phim</h6>
+                        <a class="collapse-item" asp-controller="Episode" asp-action="Index">Danh Sách Tập Phim</a>
+                        <a class="collapse-item" asp-controller="Episode" asp-action="Create" style="width:auto !important;">Thêm Tập Phim</a>
                     </div>
                 </div>
             </li>

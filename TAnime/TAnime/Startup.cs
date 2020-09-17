@@ -35,6 +35,7 @@ namespace TAnime
             services.AddScoped<IAnimeService, AnimeService>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IEpisodeRepository, EpisodeRepository>();
+            services.AddScoped<ICountryRepository, CountryRepository>();
 
         }
 

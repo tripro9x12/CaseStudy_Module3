@@ -10,7 +10,7 @@ namespace TAnime.Models.ViewModels.Categories
     {
         [Required]
         [MaxLength(200)]
-        [Display(Name ="Category Name")]
+        [Display(Name ="Tên Thể Loại")]
         public string categoryName { get; set; }
     }
 }

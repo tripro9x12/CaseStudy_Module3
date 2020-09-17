@@ -73,6 +73,15 @@ namespace TAnime.Controllers
         {
             if (ModelState.IsValid)
             {
+                var categories = categoryRepository.Gets().ToList();
+                foreach (var name in categories)
+                {
+                    if (name.categoryName == model.categoryName)
+                    {
+                        ModelState.AddModelError("", "tên đã tồn tại");
+                        return View();
+                    }
+                }
                 var categoty = categoryRepository.Get(model.CategoryId);
                 categoty.categoryName = model.categoryName;
                 var result = categoryRepository.EditCategory(categoty);

@@ -1,8 +1,8 @@
 ﻿@model EditCategoryViewModel
 @{
-    ViewBag.Title = "Edit Category";
+    ViewBag.Title = "Chỉnh Sửa Thể Loại Phim";
 }
-<h3><a asp-controller="Category" asp-action="Index" class="text-dark">Category Management</a> &gt; @ViewBag.Title</h3>
+<h5><a asp-controller="Category" asp-action="Index" class="text-dark">Danh Sách Thể Loại Phim</a> &gt; @ViewBag.Title</h5>
 <form asp-controller="Category" asp-action="Edit" method="post" class="mt-2">
     <input hidden asp-for="CategoryId"/>
     <div class="row">
@@ -21,8 +21,8 @@
 
         </div>
         <div class="col-sm-10 form-group">
-            <button type="submit" class="btn btn-primary btnn">Update</button>
-            <a asp-controller="Category" asp-action="Index" class="btn btn-warning btnn">Back</a>
+            <button type="submit" class="btn btn-primary btnn">Cập Nhật</button>
+            <a asp-controller="Category" asp-action="Index" class="btn btn-warning btnn">Trở Lại</a>
         </div>
     </div>
 </form>

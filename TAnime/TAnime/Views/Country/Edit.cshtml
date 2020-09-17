@@ -1,0 +1,28 @@
+﻿@model EditCountryView
+@{
+    ViewBag.Title = "Chỉnh Sửa Quốc Gia";
+}
+<h5><a asp-controller="Country" asp-action="Index" class="text-dark">Danh Sách Quốc Gia</a> &gt; @ViewBag.Title</h5>
+<form asp-controller="Country" asp-action="Edit" method="post" class="mt-2">
+    <input hidden asp-for="CountryId" />
+    <div class="row">
+        <div class="col-sm-2 form-group">
+            <label asp-for="CountryName"></label>
+        </div>
+        <div class="col-sm-10 form-group">
+            <input type="text" asp-for="CountryName" class="form-control" />
+            <span asp-validation-for="CountryName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="row">
+        <div class="col-sm-2 form-group">
+
+        </div>
+        <div class="col-sm-10 form-group">
+            <button type="submit" class="btn btn-primary btnn">Cập Nhật</button>
+            <a asp-controller="Country" asp-action="Index" class="btn btn-warning btnn">Trở Lại</a>
+        </div>
+    </div>
+</form>

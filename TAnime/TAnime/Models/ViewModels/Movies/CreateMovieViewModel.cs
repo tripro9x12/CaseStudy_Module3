@@ -10,6 +10,7 @@ namespace TAnime.Models.ViewModels.Movies
 {
     public class CreateMovieViewModel
     {
+       
         [MaxLength(300)]
         [Required(ErrorMessage ="Trường này không được để trống")]
         [Display(Name ="Tên Phim")]
@@ -19,10 +20,11 @@ namespace TAnime.Models.ViewModels.Movies
         public string Content { get; set; }
         [Required(ErrorMessage = "Trường này không được để trống")]
         [Display(Name = "Quốc gia")]
-        public string Country { get; set; }
+        public int Country { get; set; }
         public List<int> categories { get; set; }
         [Display(Name = "Tệp Đính Kèm")]
         public IFormFile Image { get; set; }
+        public string ImageOfVideo { get; set; }
         [DataType(DataType.Time)]
         [Display(Name ="Ngày Đăng")]
         public DateTime Time { get; set; }

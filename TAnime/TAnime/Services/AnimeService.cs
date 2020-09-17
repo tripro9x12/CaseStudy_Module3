@@ -19,9 +19,30 @@ namespace TAnime.Services
             this.context = context;
         }
 
-        public int CreateMovie(Movie movie)
+        public int CreateMovie(CreateMovie movie)
         {
-            context.Movies.Add(movie);
+            var newmovie = new Movie()
+            {
+                MovieName = movie.MovieName,
+                Time = movie.Time,
+                Content = movie.Content,
+                _CountryId = movie.Country,
+                ImageOfVideo = movie.Imagepath
+            };
+            
+            context.Movies.Add(newmovie);
+            context.SaveChanges();
+            if(movie.categories != null)
+            {
+                var mcList = new List<MovieCategory>();
+                mcList = movie.categories.Select(c => new MovieCategory()
+                {
+                    CategoryId = c,
+                    MovieId = newmovie.MovieId
+                }).ToList();
+                context.MovieCategories.AddRange(mcList);
+                movie.MovieId = newmovie.MovieId;
+            }
             return context.SaveChanges();
         }
 

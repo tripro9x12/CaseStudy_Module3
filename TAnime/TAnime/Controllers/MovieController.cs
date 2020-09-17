@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using TAnime.Models.Entities;
@@ -15,11 +17,15 @@ namespace TAnime.Controllers
     {
         private readonly IAnimeService animeService;
         private readonly ICategoryRepository categoryRepository;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public MovieController(IAnimeService animeService, ICategoryRepository categoryRepository)
+        public MovieController(IAnimeService animeService, 
+                               ICategoryRepository categoryRepository,
+                               IWebHostEnvironment webHostEnvironment)
         {
             this.animeService = animeService;
             this.categoryRepository = categoryRepository;
+            this.webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Index()
         {
@@ -36,13 +42,36 @@ namespace TAnime.Controllers
         [HttpPost]
         public IActionResult Create(CreateMovieViewModel model)
         {
-            var movie = new CreateMovie()
+            if (ModelState.IsValid)
             {
-                MovieName = model.MovieName,
-                Content = model.Content
-            };
-            return View();
+                var movie = new CreateMovie()
+                {
+                    MovieName = model.MovieName,
+                    Content = model.Content,
+                    Time = model.Time,
+                    Country = model.Country,
+                    categories = model.categories
+                };
+                var fileName = string.Empty;
+                if(model.Image != null)
+                {
+                    var UploadFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                    fileName = $"{Guid.NewGuid()}_{model.Image.FileName}";
+                    var filePath = Path.Combine(UploadFolder, fileName);
+                    using(var fs = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Image.CopyTo(fs);
+                    }
+                }
+                movie.Imagepath = fileName;
+                var newMovie = animeService.CreateMovie(movie);
+                return RedirectToAction("Index", "Movie");
+
+            }
+
+            return View(model);
         }
+
         private List<CategoryViewModel> GetCategories()
         {
             return categoryRepository.Gets().ToList();
