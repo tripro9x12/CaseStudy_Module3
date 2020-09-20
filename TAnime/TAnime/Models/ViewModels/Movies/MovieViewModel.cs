@@ -14,7 +14,8 @@ namespace TAnime.Models.ViewModels.Movies
         public string Content { get; set; }
         public string ImageOfVideo { get; set; }
         public string Country { get; set; }
-        public List<MovieCategoryViewModel> MovieCategories { get; set; }
+        public DateTime Time { get; set; }
+        public List<string> Categories { get; set; }
         public List<Episode> Episodes { get; set; }
     }
 }

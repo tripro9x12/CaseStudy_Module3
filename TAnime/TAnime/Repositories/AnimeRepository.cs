@@ -10,11 +10,11 @@ using TAnime.Models.ViewModels.Movies;
 
 namespace TAnime.Services
 {
-    public class AnimeService : IAnimeService
+    public class AnimeRepository : IAnimeRepository
     {
         private readonly AppDbContext context;
 
-        public AnimeService(AppDbContext context)
+        public AnimeRepository(AppDbContext context)
         {
             this.context = context;
         }
@@ -71,37 +71,25 @@ namespace TAnime.Services
         public IEnumerable<MovieViewModel> GetMovies()
         {
             IEnumerable<MovieViewModel> movies = new List<MovieViewModel>();
-            var episode = from m in context.Movies
-                          join e in context.Episodes on m.MovieId equals e._MovieId
-                          select (new Episode()
-                          {
-                              EpisodeId = e.EpisodeId,
-                              EpisodeCode = e.EpisodeCode,
-                              VideoPath = e.VideoPath
-                          });
-            var movieCategories = from m in context.Movies
-                                  join mc in context.MovieCategories on m.MovieId equals mc.MovieId
-                                  join c in context.Categories on mc.CategoryId equals c.CategoryId
-                                  select (new MovieCategoryViewModel()
-                                  {
-                                      MovieName = m.MovieName,
-                                      CategoryName = c.categoryName
-                                  });
             movies = (from m in context.Movies
-                      join e in context.Episodes on m.MovieId equals e._MovieId
-                      join ct in context.Countries on m._CountryId equals ct.CountryId
-                      join mc in context.MovieCategories on m.MovieId equals mc.MovieId
-                      join c in context.Categories on mc.CategoryId equals c.CategoryId
-                      select (new MovieViewModel()
+                      join c in context.Countries on m._CountryId equals c.CountryId
+                      select new MovieViewModel()
                       {
                           MovieId = m.MovieId,
                           MovieName = m.MovieName,
                           Content = m.Content,
-                          Country = ct.CountryName,
-                          ImageOfVideo = m.ImageOfVideo,
-                          Episodes = episode.ToList(),
-                          MovieCategories = movieCategories.ToList()
-                      })).ToList();
+                          Country = c.CountryName,
+                          Time = m.Time,                     
+                      }).ToList();
+            
+            foreach (var movie in movies)
+            {
+                movie.Categories = (from c in context.Categories
+                                    join mc in context.MovieCategories on c.CategoryId equals mc.CategoryId
+                                    where mc.MovieId == movie.MovieId
+                                    select c.categoryName).ToList();
+            }
+           
             return movies;
         }
 

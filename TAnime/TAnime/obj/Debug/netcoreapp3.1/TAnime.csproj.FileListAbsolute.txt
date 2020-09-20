@@ -484,3 +484,4 @@ D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\TAnime.csproj
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Country\Create.cshtml.g.cs
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Country\Index.cshtml.g.cs
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Country\Edit.cshtml.g.cs
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Movie\Index.cshtml.g.cs

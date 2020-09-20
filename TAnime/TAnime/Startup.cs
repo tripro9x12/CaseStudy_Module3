@@ -32,7 +32,7 @@ namespace TAnime
             services.AddMvc(option =>
                             option.EnableEndpointRouting = false);
             services.AddDbContext<AppDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("TAnimeDbManagement")));
-            services.AddScoped<IAnimeService, AnimeService>();
+            services.AddScoped<IAnimeRepository, AnimeRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IEpisodeRepository, EpisodeRepository>();
             services.AddScoped<ICountryRepository, CountryRepository>();

@@ -7,7 +7,7 @@ using TAnime.Models.ViewModels.Movies;
 
 namespace TAnime.Services
 {
-    public interface IAnimeService
+    public interface IAnimeRepository
     {
         IEnumerable<MovieViewModel> GetMovies();
         MovieViewModel GetMovieViewModel(int id);

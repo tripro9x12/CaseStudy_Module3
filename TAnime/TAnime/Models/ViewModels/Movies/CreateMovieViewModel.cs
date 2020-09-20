@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using TAnime.Models.Entities;
 using TAnime.Models.ViewModels.Categories;
 
 namespace TAnime.Models.ViewModels.Movies

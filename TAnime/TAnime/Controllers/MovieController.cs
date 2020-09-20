@@ -15,22 +15,22 @@ namespace TAnime.Controllers
 {
     public class MovieController : Controller
     {
-        private readonly IAnimeService animeService;
+        private readonly IAnimeRepository animeRepository;
         private readonly ICategoryRepository categoryRepository;
         private readonly IWebHostEnvironment webHostEnvironment;
 
-        public MovieController(IAnimeService animeService, 
+        public MovieController(IAnimeRepository animeRepository, 
                                ICategoryRepository categoryRepository,
                                IWebHostEnvironment webHostEnvironment)
         {
-            this.animeService = animeService;
+            this.animeRepository = animeRepository;
             this.categoryRepository = categoryRepository;
             this.webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Index()
         {
-            IEnumerable<MovieViewModel> movies = new List<MovieViewModel>();
-            movies = animeService.GetMovies().ToList();
+            var movies = new List<MovieViewModel>();
+            movies = animeRepository.GetMovies().ToList();
             return View(movies);
         }
         [HttpGet]
@@ -64,13 +64,32 @@ namespace TAnime.Controllers
                     }
                 }
                 movie.Imagepath = fileName;
-                var newMovie = animeService.CreateMovie(movie);
+                var newMovie = animeRepository.CreateMovie(movie);
                 return RedirectToAction("Index", "Movie");
 
             }
 
             return View(model);
         }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var anime = animeRepository.GetMovieViewModel(id);
+            var editAnime = new EditMovieViewModel()
+            {
+                MovieId = anime.MovieId,
+                MovieName = anime.MovieName,
+                ImageOfVideo = anime.ImageOfVideo,
+                Content = anime.Content,
+                Time = anime.Time
+            };
+            return View();
+        }
+        //[HttpPost]
+        //public IActionResult Edit()
+        //{
+
+        //}
 
         private List<CategoryViewModel> GetCategories()
         {

@@ -1,0 +1,52 @@
+﻿@model List<MovieViewModel>
+@{
+    ViewData["Title"] = "Danh sách Phim";
+}
+<div class="text-center">
+    <h5 class="display-4">Danh sách Phim</h5>
+    <table id="tbStudent" class="table table-bordered table-hover table-primary ">
+        <thead class="thead-dark">
+            <tr>
+                <th>#ID</th>
+                <th>Tên Phim</th>
+                <th style="width:50%">Nội Dung</th>
+                <th>Quốc Gia</th>
+                <th>Thể Loại</th>
+                <th>Ngày</th>
+                <th style="width:12%">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody class="bg-light">
+            @foreach (var movie in Model)
+            {
+            <tr>
+                <td>@movie.MovieId</td>
+                <td>@movie.MovieName</td>
+                <td>@movie.Content</td>
+                <td>@movie.Country</td>               
+                <td>
+                    @foreach (var mov in movie.Categories)
+                    {
+                    <p>@mov</p>
+                    }
+                </td>
+                <td>@movie.Time</td>
+                <td>
+                    <a asp-controller="Movie" asp-action="Detail" asp-route-id="" class="text-info"><i class="fas fa-eye"></i></a>
+                    <a asp-controller="Movie" asp-action="Edit" asp-route-id="" class="text-primary"><i class="fas fa-edit"></i></a>
+                    <a href="javascript:void(0)" class="text-danger" onclick="student.delete()"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<style>
+    a {
+        margin-right: 10px;
+    }
+</style>
+@section Scripts{
+    <script src="~/lib/bootbox/bootbox.min.js"></script>
+    <script src="~/js/student.js" asp-append-version="true"></script>
+}
