@@ -8,6 +8,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200922035511_addEpisodeMovieColumnInEpisodeTable.cs" />
     <Compile Remove="Migrations\20200922035511_addEpisodeMovieColumnInEpisodeTable.Designer.cs" />
+    <Compile Remove="Migrations\20200922153902_EditEpisodeColumnDate.cs" />
+    <Compile Remove="Migrations\20200922153902_EditEpisodeColumnDate.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -76,6 +76,24 @@ namespace TAnime.Controllers
 
             return View(model);
         }
+        public IActionResult Detail(int? id)
+        {
+            try
+            {
+                int.Parse(id.Value.ToString());
+                var anime = animeRepository.GetMovieViewModel(id.Value);
+                if(anime == null)
+                {
+                    return View();
+                }
+                return View(anime);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -111,11 +129,6 @@ namespace TAnime.Controllers
                     }
                 }
                 model.ImageOfVideo = fileName;
-                if (!string.IsNullOrEmpty(model.ImageOfVideo))
-                {
-                    var delFile = Path.Combine(webHostEnvironment.WebRootPath, "images", model.ImageOfVideo);
-                    System.IO.File.Delete(delFile);
-                }
                 if(animeRepository.EditMovie(model) > 0)
                 {
                     return RedirectToAction("Index", "Movie");

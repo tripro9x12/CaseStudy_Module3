@@ -489,3 +489,4 @@ D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\M
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Episode\Create.cshtml.g.cs
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Episode\Index.cshtml.g.cs
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Episode\Edit.cshtml.g.cs
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Movie\Detail.cshtml.g.cs

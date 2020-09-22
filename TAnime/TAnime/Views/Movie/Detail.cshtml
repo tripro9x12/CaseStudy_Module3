@@ -1,0 +1,23 @@
+﻿@model MovieViewModel
+@{
+    ViewBag.Title = "Xem thông tin phim";
+
+}
+<div class="row">
+    <div class="col-5">
+       
+        <img src="~/images/@Model.ImageOfVideo" style="height:auto; width:100%" />
+    </div>
+    <div class="col-7">
+        <h3>@Model.MovieName</h3>
+        <p>Quốc gia: @Model.Country</p>
+        <p>Thể Loại: @string.Join(", ", Model.Categories)</p>
+        <p>Ngày Đăng: @Model.Time.ToString("dd/MM/yyyy")</p>
+        <h5>Thông tin truyện</h5>
+        <p>@Model.Content</p>
+        @*<h5>Trailer</h5>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="~/videos/vu-dong-can-khon-trailer-p2.mp4" allowfullscreen></iframe>
+        </div>*@
+    </div>
+</div>

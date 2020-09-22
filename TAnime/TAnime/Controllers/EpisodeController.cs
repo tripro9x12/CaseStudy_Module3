@@ -59,19 +59,10 @@ namespace TAnime.Controllers
                     EpisodeCode = model.EpisodeCode,
                     EpisodeMovie = model.EpisodeMovie,
                     _MovieId = model._MovieId,
-                    DateTime = model.DateTime
+                    DateTime = model.DateTime,
+                    VideoPath = model.VideoPath
                 };
                 var fileName = string.Empty;
-                if(model.Video != null)
-                {
-                    var uploadFolder = Path.Combine(webHostEnvironment.WebRootPath, "Videos");
-                    fileName = model.Video.FileName;
-                    var filePath = Path.Combine(uploadFolder, fileName);
-                    using(var fs = new FileStream(filePath, FileMode.Create))
-                    {
-                        model.Video.CopyTo(fs);
-                    }
-                }
                 episode.VideoPath = fileName;
                 if(episodeRepository.CreateEpisode(episode) > 0)
                 {
@@ -83,7 +74,7 @@ namespace TAnime.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            ViewBag.Movies = GetMovies();
+            ViewBag.movies = GetMovies();
             var episode = episodeRepository.GetEpisode(id);
             var editEpisode = new EditEpisodeViewModel()
             {
@@ -99,41 +90,20 @@ namespace TAnime.Controllers
         [HttpPost]
         public IActionResult Edit(EditEpisodeViewModel model)
         {
+            ViewBag.Movies = GetMovies();
             if (ModelState.IsValid)
             {
-                var episodes = episodeRepository.GetEpisodes().ToList();
-                foreach (var item in episodes)
-                {
-                    if (item.EpisodeCode == model.EpisodeCode)
-                    {
-                        ModelState.AddModelError("", "Mã phim đã tồn tại");
-                        return View();
-                    }
-                }
+                
                 var episode = new Episode()
                 {
                     EpisodeCode = model.EpisodeCode,
                     EpisodeMovie = model.EpisodeMovie,
                     _MovieId = model._MovieId,
-                    DateTime = model.DateTime
-                };
-                var fileName = string.Empty;
-                if (model.Video != null)
-                {
-                    var uploadFolder = Path.Combine(webHostEnvironment.WebRootPath, "Videos");
-                    fileName = model.Video.FileName;
-                    var filePath = Path.Combine(uploadFolder, fileName);
-                    using (var fs = new FileStream(filePath, FileMode.Create))
-                    {
-                        model.Video.CopyTo(fs);
-                    }
-                }
-                episode.VideoPath = fileName;
-                if (!string.IsNullOrEmpty(model.VideoPath))
-                {
-                    var delFile = Path.Combine(webHostEnvironment.WebRootPath, "images", model.VideoPath);
-                    System.IO.File.Delete(delFile);
-                }
+                    DateTime = model.DateTime,
+                    VideoPath = model.VideoPath,
+                    EpisodeId = model.EpisodeId
+                };           
+               
                 if (episodeRepository.EditEpisode(episode) > 0)
                 {
                     return RedirectToAction("Index", "Episode");

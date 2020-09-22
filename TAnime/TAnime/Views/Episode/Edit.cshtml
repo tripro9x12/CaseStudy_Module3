@@ -2,19 +2,19 @@
 @inject AppDbContext context
 @{
     ViewBag.Title = "Chỉnh sửa phim";
-    var Movies = ViewBag.Movies as List<Movies>;
+    var movies = ViewBag.movies as List<Movies>;
 }
 <div class="container">
-    <form enctype="multipart/form-data" asp-controller="Episode" asp-action="Edit" method="post" class="mt-2">
-        <input hidden asp-for="EpisodeId"/>
-        <input hidden asp-for="VideoPath"/>
+    <form  asp-controller="Episode" asp-action="Edit" method="post" class="mt-2">
+        <input hidden asp-for="EpisodeId" />
+        <input hidden asp-for="VideoPath" />
         <div class="row">
             <div class="col-sm-2 form-group">
                 <label asp-for="_MovieId"></label>
             </div>
             <div class="col-sm-10 form-group">
                 <select class="form-control" asp-for="_MovieId">
-                    @foreach (var item in Movies)
+                    @foreach (var item in movies)
                     {
                         <option value="@item.MovieId" selected="@(item.MovieId == Model._MovieId)">@item.MovieName</option>
                     }
@@ -49,17 +49,14 @@
                 <span asp-validation-for="DateTime" class="text-danger"></span>
             </div>
         </div>
+
         <div class="row">
             <div class="col-sm-2 form-group">
-                <label asp-for="Video"></label>
+                <label asp-for="VideoPath"></label>
             </div>
             <div class="col-sm-10 form-group">
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" asp-for="Video">
-                    <label class="custom-file-label" for="customFile">Chọn tệp</label>
-                </div>
-                <span asp-validation-for="Video" class="text-danger"></span>
-
+                <input type="text" asp-for="VideoPath" class="form-control" />
+                <span asp-validation-for="VideoPath" class="text-danger"></span>
             </div>
         </div>
         <div class="row">
@@ -67,21 +64,9 @@
 
             </div>
             <div class="col-sm-10 form-group">
-                <button type="submit" class="btn btn-primary btnn">Thêm</button>
-                <button type="reset" class="btn btn-danger btnn">Hủy Bỏ</button>
+                <button type="submit" class="btn btn-primary btnn">Cập Nhật</button>
                 <a asp-controller="Episode" asp-action="Index" class="btn btn-warning btnn">Trở Lại</a>
             </div>
         </div>
     </form>
 </div>
-
-@section scripts{
-    <script>
-        $(document).ready(() => {
-            $(".custom-file-input").on("change", function () {
-                var fileName = $(this).val().split("\\").pop();
-                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-            });
-        });
-    </script>
-}

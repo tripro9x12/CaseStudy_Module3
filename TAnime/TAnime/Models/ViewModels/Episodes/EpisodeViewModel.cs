@@ -13,7 +13,7 @@ namespace TAnime.Models.ViewModels.Episodes
         public string EpisodeCode { get; set; }
         public string EpisodeMovie { get; set; }
         public string _MovieName { get; set; }
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         public DateTime DateTime  { get; set; }
     }
 }

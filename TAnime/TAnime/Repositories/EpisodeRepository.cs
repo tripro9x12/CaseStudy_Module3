@@ -32,8 +32,8 @@ namespace TAnime.Repositories
 
         public int EditEpisode(Episode model)
         {
-            var editEpi = context.Episodes.Attach(model);
-            editEpi.State = EntityState.Modified;
+            var editEpisode = context.Episodes.Attach(model);
+            editEpisode.State = EntityState.Modified;
             return context.SaveChanges();
         }
 

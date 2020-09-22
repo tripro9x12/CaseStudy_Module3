@@ -9,6 +9,7 @@ namespace TAnime.Models.ViewModels.Episodes
 {
     public class CreateEpisodeViewModel
     {
+        [Display(Name = "Đường dẫn phim")]
         public string VideoPath { get; set; }
         [Required(ErrorMessage = "Không được để trống")]
         [Display(Name ="Mã Tập Phim")]
@@ -19,11 +20,9 @@ namespace TAnime.Models.ViewModels.Episodes
         [Required(ErrorMessage = "Không được để trống")]
         [Display(Name ="Tên Bộ Phim")]
         public int _MovieId { get; set; }
-        [Display(Name ="Chọn Tập Phim")]
-        public IFormFile Video { get; set; }
         [Display(Name = "Ngày Đăng")]
         [Required(ErrorMessage = "Không được để trống")]
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         public DateTime DateTime { get; set; }
     }
 }

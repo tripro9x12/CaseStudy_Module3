@@ -62,8 +62,11 @@ namespace TAnime.Services
             context.MovieCategories.RemoveRange(mcList);
             context.SaveChanges();
             var delMovie = GetMovie(movieId);
-            var delFile = Path.Combine(webHostEnvironment.WebRootPath, "images", delMovie.ImageOfVideo);
-            System.IO.File.Delete(delFile);
+            if (!string.IsNullOrEmpty(delMovie.ImageOfVideo))
+            {
+                var delFile = Path.Combine(webHostEnvironment.WebRootPath, "images", delMovie.ImageOfVideo);
+               File.Delete(delFile);
+            }
             context.Movies.Remove(delMovie);
             return context.SaveChanges();
         }
@@ -104,9 +107,23 @@ namespace TAnime.Services
         public MovieViewModel GetMovieViewModel(int id)
         {
             IEnumerable<MovieViewModel> movies = new List<MovieViewModel>();
-            MovieViewModel movie = new MovieViewModel();
-            movie = GetMovies().FirstOrDefault(m => m.MovieId == id);
-            return movie;
+            movies = GetMovies().ToList();
+            foreach(var movie in movies)
+            {
+                movie.Episodes = (from m in context.Movies
+                                  join e in context.Episodes on m.MovieId equals e._MovieId
+                                  select new Episode()
+                                  {
+                                      
+                                      _MovieId = m.MovieId,
+                                      DateTime = e.DateTime,
+                                      EpisodeId = e.EpisodeId,
+                                      EpisodeCode = e.EpisodeCode,
+                                      EpisodeMovie = e.EpisodeMovie,
+                                      VideoPath = e.VideoPath
+                                  }).ToList();
+            }
+            return movies.FirstOrDefault(m=>m.MovieId == id);
         }
 
         public IEnumerable<MovieViewModel> GetMovies()
@@ -120,7 +137,8 @@ namespace TAnime.Services
                           MovieName = m.MovieName,
                           Content = m.Content,
                           Country = c.CountryName,
-                          Time = m.Time,                     
+                          Time = m.Time, 
+                          ImageOfVideo = m.ImageOfVideo
                       }).ToList();
             
             foreach (var movie in movies)
