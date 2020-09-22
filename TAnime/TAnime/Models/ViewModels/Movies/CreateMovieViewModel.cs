@@ -21,8 +21,8 @@ namespace TAnime.Models.ViewModels.Movies
         public string Content { get; set; }
         [Required(ErrorMessage = "Trường này không được để trống")]
         [Display(Name = "Quốc gia")]
-        public int Country { get; set; }
-        public List<int> categories { get; set; }
+        public int CountryId { get; set; }
+        public List<Category> categories { get; set; }
         [Display(Name = "Tệp Đính Kèm")]
         public IFormFile Image { get; set; }
         public string ImageOfVideo { get; set; }

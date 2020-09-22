@@ -12,6 +12,7 @@ namespace TAnime.Services
         IEnumerable<MovieViewModel> GetMovies();
         MovieViewModel GetMovieViewModel(int id);
         Movie GetMovie(int id);
+        GetMovie GetMovieView(int id);
         int CreateMovie(CreateMovie movie);
         int EditMovie(Movie movie);
         int DeleteMovie(int movieId);

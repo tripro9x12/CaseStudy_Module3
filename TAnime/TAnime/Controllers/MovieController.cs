@@ -7,7 +7,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using TAnime.Models.Entities;
 using TAnime.Models.ViewModels.Categories;
+using TAnime.Models.ViewModels.Country;
 using TAnime.Models.ViewModels.Movies;
+using TAnime.Repositories;
 using TAnime.Services;
 using TAnime.Services_Repository;
 
@@ -18,14 +20,17 @@ namespace TAnime.Controllers
         private readonly IAnimeRepository animeRepository;
         private readonly ICategoryRepository categoryRepository;
         private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly ICountryRepository countryRepository;
 
         public MovieController(IAnimeRepository animeRepository, 
                                ICategoryRepository categoryRepository,
-                               IWebHostEnvironment webHostEnvironment)
+                               IWebHostEnvironment webHostEnvironment,
+                               ICountryRepository countryRepository)
         {
             this.animeRepository = animeRepository;
             this.categoryRepository = categoryRepository;
             this.webHostEnvironment = webHostEnvironment;
+            this.countryRepository = countryRepository;
         }
         public IActionResult Index()
         {
@@ -49,7 +54,7 @@ namespace TAnime.Controllers
                     MovieName = model.MovieName,
                     Content = model.Content,
                     Time = model.Time,
-                    Country = model.Country,
+                    Country = model.CountryId,
                     categories = model.categories
                 };
                 var fileName = string.Empty;
@@ -74,26 +79,34 @@ namespace TAnime.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var anime = animeRepository.GetMovieViewModel(id);
+            var anime = animeRepository.GetMovieView(id);
             var editAnime = new EditMovieViewModel()
             {
                 MovieId = anime.MovieId,
                 MovieName = anime.MovieName,
                 ImageOfVideo = anime.ImageOfVideo,
                 Content = anime.Content,
-                Time = anime.Time
+                Time = anime.Time,
+                CountryId = anime._CountryId,
+                categories = anime.Categories
             };
+            ViewBag.Categories = GetCategories();
+            ViewBag.Coutries = GetCoutries();
+            return View(editAnime);
+        }
+        [HttpPost]
+        public IActionResult Edit(EditMovieViewModel model)
+        {
             return View();
         }
-        //[HttpPost]
-        //public IActionResult Edit()
-        //{
-
-        //}
 
         private List<CategoryViewModel> GetCategories()
         {
             return categoryRepository.Gets().ToList();
+        }
+        private List<CountryViewModel> GetCoutries()
+        {
+            return countryRepository.GetCountries().ToList();
         }
     }
 }

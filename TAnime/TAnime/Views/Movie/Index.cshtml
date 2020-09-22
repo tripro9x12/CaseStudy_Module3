@@ -32,8 +32,8 @@
                 </td>
                 <td>@movie.Time</td>
                 <td>
-                    <a asp-controller="Movie" asp-action="Detail" asp-route-id="" class="text-info"><i class="fas fa-eye"></i></a>
-                    <a asp-controller="Movie" asp-action="Edit" asp-route-id="" class="text-primary"><i class="fas fa-edit"></i></a>
+                    <a asp-controller="Movie" asp-action="Detail" asp-route-id="@movie.MovieId" class="text-info"><i class="fas fa-eye"></i></a>
+                    <a asp-controller="Movie" asp-action="Edit" asp-route-id="@movie.MovieId" class="text-primary"><i class="fas fa-edit"></i></a>
                     <a href="javascript:void(0)" class="text-danger" onclick="student.delete()"><i class="fas fa-trash"></i></a>
                 </td>
             </tr>

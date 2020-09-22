@@ -37,7 +37,7 @@ namespace TAnime.Services
                 var mcList = new List<MovieCategory>();
                 mcList = movie.categories.Select(c => new MovieCategory()
                 {
-                    CategoryId = c,
+                    CategoryId = c.CategoryId,
                     MovieId = newmovie.MovieId
                 }).ToList();
                 context.MovieCategories.AddRange(mcList);
@@ -98,5 +98,28 @@ namespace TAnime.Services
             return context.Movies.FirstOrDefault(m => m.MovieId == id);
         }
 
+        public GetMovie GetMovieView(int id)
+        {
+            List<GetMovie> movies = new List<GetMovie>();
+            movies = (from m in context.Movies
+                      join c in context.Countries on m._CountryId equals c.CountryId
+                      select new GetMovie()
+                      {
+                          MovieId = m.MovieId,
+                          MovieName = m.MovieName,
+                          Time = m.Time,
+                          Content = m.Content,
+                          ImageOfVideo = m.ImageOfVideo,
+                          _CountryId = c.CountryId
+                      }).ToList();
+            foreach (var movie in movies)
+            {
+                movie.Categories = (from c in context.Categories
+                                    join mc in context.MovieCategories on c.CategoryId equals mc.CategoryId
+                                    where mc.MovieId == movie.MovieId
+                                    select c).ToList();
+            }
+            return movies.FirstOrDefault(m=>m.MovieId == id);
+        }
     }
 }

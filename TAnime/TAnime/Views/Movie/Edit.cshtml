@@ -1,11 +1,14 @@
-﻿@model CreateMovieViewModel
+﻿@model EditMovieViewModel
 @inject AppDbContext context
 @{
-    ViewBag.Title = "Thêm phim";
+    ViewBag.Title = "Chỉnh Sửa phim";
     var Categories = ViewBag.Categories as List<CategoryViewModel>;
+    var Countries = ViewBag.Countries as List<CountryViewModel>;
 }
 <div class="container">
-    <form enctype="multipart/form-data" asp-controller="Movie" asp-action="Create" method="post" class="mt-2">
+    <form enctype="multipart/form-data" asp-controller="Movie" asp-action="Edit" method="post" class="mt-2">
+        <input hidden asp-for="MovieId"/>
+        <input hidden asp-for="ImageOfVideo"/>
         <div class="row">
             <div class="col-sm-2 form-group">
                 <label asp-for="MovieName"></label>
@@ -30,12 +33,12 @@
             </div>
             <div class="col-sm-4 form-group">
                 <select class="form-control" asp-for="CountryId">
-                     @foreach(var item in context.Countries)
-                     {
-                         <option value="@item.CountryId">@item.CountryName</option>
-                     }
+                    @foreach (var item in context.Countries)
+                    {
+                        <option value="@item.CountryId" selected="@(item.CountryId == Model.CountryId)">@item.CountryName</option>
+                    }
                 </select>
-                    <span asp-validation-for="CountryId" class="text-danger"></span>
+                <span asp-validation-for="CountryId" class="text-danger"></span>
             </div>
         </div>
         <div class="row">
@@ -49,7 +52,7 @@
                     {
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="checkbox" name="categories" class="form-check-input" value="@category.CategoryId" /> @category.categoryName
+                                <input type="checkbox" name="categories" class="form-check-input" value="@category.CategoryId" checked="@(Model.categories.Where(c=>c.CategoryId == category.CategoryId).ToList().Count()>0)"/> @category.categoryName
                             </label>
                         </div>
                     }
