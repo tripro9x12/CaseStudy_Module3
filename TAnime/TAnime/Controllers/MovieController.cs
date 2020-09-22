@@ -97,7 +97,39 @@ namespace TAnime.Controllers
         [HttpPost]
         public IActionResult Edit(EditMovieViewModel model)
         {
+            if (ModelState.IsValid)
+            {
+                var fileName = string.Empty;
+                if(model.Image != null)
+                {
+                    var UploadFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                    fileName = $"{Guid.NewGuid()}_{model.Image.FileName}";
+                    var filePath = Path.Combine(UploadFolder, fileName);
+                    using (var fs = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Image.CopyTo(fs);
+                    }
+                }
+                model.ImageOfVideo = fileName;
+                if (!string.IsNullOrEmpty(model.ImageOfVideo))
+                {
+                    var delFile = Path.Combine(webHostEnvironment.WebRootPath, "images", model.ImageOfVideo);
+                    System.IO.File.Delete(delFile);
+                }
+                if(animeRepository.EditMovie(model) > 0)
+                {
+                    return RedirectToAction("Index", "Movie");
+                }
+            }
             return View();
+        }
+        [Route("Movie/Delete/{MovieId}")]
+        public IActionResult Delete(int MovieId)
+        {
+
+            var delMovie = animeRepository.DeleteMovie(MovieId);
+            return Json(new { delMovie });
+
         }
 
         private List<CategoryViewModel> GetCategories()

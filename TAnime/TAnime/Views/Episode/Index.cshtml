@@ -1,0 +1,40 @@
+﻿@model List<EpisodeViewModel>
+@{
+    ViewBag.Title = "Danh Sách Các Tập Phim";
+}
+<h3>@ViewBag.Title</h3>
+<table class="table table-bordered table-hover mt-2" id="tbEpisode">
+    <thead>
+        <tr class="bg-dark text-light">
+            <th>#Id</th>
+            <th>Tên Phim</th>
+            <th>Mã Phim</th>
+            <th>Tập Phim</th>
+            <th>Thao Tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var episode in Model)
+            {
+        <tr>
+            <td>@episode.EpisodeId</td>
+            <td>@episode._MovieName</td>
+            <td>@episode.EpisodeCode</td>
+            <td>@episode.EpisodeMovie</td>
+            <td>
+                <a asp-controller="Episode" asp-action="Edit" asp-route-id="@episode.EpisodeId" class="btn btn-warning btnn">Chỉnh Sửa</a>
+                <a href="javascript:void(0)" class="btn btn-danger btnn" onclick="episode.delete(@episode.EpisodeId)">Xóa</a>
+            </td>
+        </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@section Scripts{
+
+    <script src="~/lib/bootbox.js/bootbox.min.js"></script>
+    <script src="~/js/episode.js" asp-append-version="true"></script>
+}

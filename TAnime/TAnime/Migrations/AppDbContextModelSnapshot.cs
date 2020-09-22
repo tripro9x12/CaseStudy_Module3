@@ -60,7 +60,14 @@ namespace TAnime.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("EpisodeCode")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("EpisodeMovie")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 

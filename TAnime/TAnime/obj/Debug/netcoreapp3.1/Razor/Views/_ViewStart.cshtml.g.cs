@@ -54,8 +54,15 @@ using TAnime.Models.ViewModels.Country;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 7 "D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\Views\_ViewImports.cshtml"
+using TAnime.Models.ViewModels.Episodes;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"37af4957909b4a97b14c8799cc31703c7d6faa82", @"/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"cfa5d077f1c465ca24ae76431ff49de838923f9c", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ea6ba5c8f2b4a5892d505cd7b175a652855f07ab", @"/Views/_ViewImports.cshtml")]
     public class Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

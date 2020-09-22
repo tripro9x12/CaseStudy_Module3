@@ -14,7 +14,8 @@ namespace TAnime.Services
         Movie GetMovie(int id);
         GetMovie GetMovieView(int id);
         int CreateMovie(CreateMovie movie);
-        int EditMovie(Movie movie);
+        int EditMovie(EditMovieViewModel movie);
         int DeleteMovie(int movieId);
+        List<Movies> GetListMovies();
     }
 }

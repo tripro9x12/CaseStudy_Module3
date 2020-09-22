@@ -1,8 +1,11 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using TAnime.Models;
 using TAnime.Models.Entities;
@@ -13,10 +16,12 @@ namespace TAnime.Services
     public class AnimeRepository : IAnimeRepository
     {
         private readonly AppDbContext context;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public AnimeRepository(AppDbContext context)
+        public AnimeRepository(AppDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             this.context = context;
+            this.webHostEnvironment = webHostEnvironment;
         }
 
         public int CreateMovie(CreateMovie movie)
@@ -37,7 +42,7 @@ namespace TAnime.Services
                 var mcList = new List<MovieCategory>();
                 mcList = movie.categories.Select(c => new MovieCategory()
                 {
-                    CategoryId = c.CategoryId,
+                    CategoryId = c,
                     MovieId = newmovie.MovieId
                 }).ToList();
                 context.MovieCategories.AddRange(mcList);
@@ -48,14 +53,50 @@ namespace TAnime.Services
 
         public int DeleteMovie(int movieId)
         {
+
+            IEnumerable<MovieCategory> mcList = new List<MovieCategory>();
+            mcList = (from mc in context.MovieCategories
+                      where mc.MovieId == movieId
+                      select mc
+                      ).ToList();
+            context.MovieCategories.RemoveRange(mcList);
+            context.SaveChanges();
             var delMovie = GetMovie(movieId);
+            var delFile = Path.Combine(webHostEnvironment.WebRootPath, "images", delMovie.ImageOfVideo);
+            System.IO.File.Delete(delFile);
             context.Movies.Remove(delMovie);
             return context.SaveChanges();
         }
 
-        public int EditMovie(Movie movie)
+        public int EditMovie(EditMovieViewModel movie)
         {
-            var editMovie = context.Movies.Attach(movie);
+            IEnumerable<MovieCategory> mcList = new List<MovieCategory>();
+            mcList = (from mc in context.MovieCategories
+                      where mc.MovieId == movie.MovieId
+                      select mc
+                      ).ToList();
+            context.MovieCategories.RemoveRange(mcList);
+            context.SaveChanges();
+            if(movie.categories != null)
+            {
+                IEnumerable<MovieCategory> addList = new List<MovieCategory>();
+                addList = movie.categories.Select(c => new MovieCategory()
+                {
+                    CategoryId = c,
+                    MovieId = movie.MovieId
+                }).ToList();
+                context.MovieCategories.AddRange(addList);
+                context.SaveChanges();
+            }
+            var editMovie = context.Movies.Attach(new Movie()
+            {
+                MovieId = movie.MovieId,
+                MovieName = movie.MovieName,
+                Content = movie.Content,
+                Time = movie.Time,
+                _CountryId = movie.CountryId,
+                ImageOfVideo = movie.ImageOfVideo
+            });
             editMovie.State = EntityState.Modified;
             return context.SaveChanges();
         }
@@ -117,9 +158,21 @@ namespace TAnime.Services
                 movie.Categories = (from c in context.Categories
                                     join mc in context.MovieCategories on c.CategoryId equals mc.CategoryId
                                     where mc.MovieId == movie.MovieId
-                                    select c).ToList();
+                                    select c.CategoryId).ToList();
             }
             return movies.FirstOrDefault(m=>m.MovieId == id);
+        }
+
+        //chỉ lấy danh sách tên phim;
+        public List<Movies> GetListMovies()
+        {
+            List<Movies> ListMovies = (from m in context.Movies
+                                        select new Movies()
+                                        {
+                                            MovieId = m.MovieId,
+                                            MovieName = m.MovieName
+                                        }).ToList();
+            return ListMovies;
         }
     }
 }
