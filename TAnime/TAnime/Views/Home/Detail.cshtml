@@ -19,9 +19,9 @@
         <p>Ngày Đăng: @Model.Time.ToString("dd/MM/yyyy")</p>
         <p>
             Thể Loại:
-            @foreach (var item in context.Categories)
+            @foreach (var item in Model.Categories)
             {
-                <a asp-controller="Home" asp-action="" asp-route-id="@item.CategoryId">@item.categoryName</a>
+                <a asp-controller="Home" asp-action="" asp-route-id="">@item</a>
             }
         </p>
         <h5>Nội Dung Phim</h5>

@@ -86,3 +86,9 @@
         width: 48% !important;
     }
 }
+@media screen and (max-width: 442px) {
+    .product {
+        width: 70% !important;
+        margin: 4px auto;
+    }
+}
