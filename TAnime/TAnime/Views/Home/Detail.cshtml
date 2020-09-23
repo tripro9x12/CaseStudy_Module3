@@ -1,0 +1,35 @@
+﻿@inject AppDbContext context
+@model MovieViewModel
+@{ 
+    ViewBag.Title = Model.MovieName;
+}
+<div class="mt-3 detail-info text-white">
+    <a asp-controller="Home" asp-action="Index">Trang Chủ</a>&nbsp;<i class="fas fa-angle-double-right" style="font-size:14px;"></i>&nbsp;<span>@Model.MovieName</span>
+</div>
+<div class="row" id="detail-info-movie">
+    <div class="col-sm-12 col-md-5 detail-info-movie-img">
+        <div>
+            <img src="~/images/@Model.ImageOfVideo" />
+            <a asp-controller="Home" asp-action="" asp-route-id="@Model.MovieId">Xem Phim</a>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-7 detail-info-movie-content">
+        <h4>Tên Phim: @Model.MovieName</h4>
+        <p>Quốc Gia: @Model.Country</p>
+        <p>Ngày Đăng: @Model.Time.ToString("dd/MM/yyyy")</p>
+        <p>
+            Thể Loại:
+            @foreach (var item in context.Categories)
+            {
+                <a asp-controller="Home" asp-action="" asp-route-id="@item.CategoryId">@item.categoryName</a>
+            }
+        </p>
+        <h5>Nội Dung Phim</h5>
+        <p>@Model.Content</p>
+    </div>
+</div>
+
+
+@section Scripts{
+    <link href="~/css/detail_Info.css" rel="stylesheet" />
+ }

@@ -55,7 +55,7 @@ namespace TAnime.Controllers
                     Content = model.Content,
                     Time = model.Time,
                     Country = model.CountryId,
-                    categories = model.categories
+                    categories = model.categories,
                 };
                 var fileName = string.Empty;
                 if(model.Image != null)

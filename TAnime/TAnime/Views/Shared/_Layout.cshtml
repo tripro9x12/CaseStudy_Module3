@@ -9,6 +9,7 @@
     <link href="~/lib/font-awesome.js/css/all.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/css/homepage.css" rel="stylesheet" />
+    <link href="~/css/maipage.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -67,9 +68,9 @@
     </header>
     
     <div style="background: #213342;">
-        <div class="container pb-4">
+        <div class="container pb-4 pl-4" style="background: #212529">
             <div class="row">
-                <div class="col-12 col-md-9">
+                <div class="col-12 col-md-9" style="height:auto">
                     <main role="main">
                         @RenderBody()
                     </main>
@@ -85,7 +86,7 @@
         </div>
     </div>
 
-    <footer class="border-top footer" id="footer">
+    <footer class="border-top" id="footer">
         <div class="container">
             <div class="text-white">
                 <p class="mt-2">
