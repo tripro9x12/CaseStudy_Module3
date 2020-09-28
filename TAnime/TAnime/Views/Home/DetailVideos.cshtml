@@ -1,0 +1,17 @@
+﻿@model MovieViewModel
+@{
+    //var title = Model.MovieName != null ? Model.MovieName : " ";
+    ViewBag.Title = $"Xem {Model.MovieName}";
+
+}
+<div class="mt-3 detail-info text-white">
+    <a asp-controller="Home" asp-action="Index">Trang Chủ</a>&nbsp;<i class="fas fa-angle-double-right" style="font-size:14px;"></i>&nbsp;
+    <a asp-controller="Home" asp-action="IndexMovieOfCountry" asp-route-id="@Model.CountryId">HH @Model.Country</a>&nbsp;<i class="fas fa-angle-double-right" style="font-size:14px;"></i>&nbsp;
+    <span>@Model.MovieName</span>
+</div>
+<div>
+
+</div>
+@section Scripts{
+    <link href="~/css/detail_Info.css" rel="stylesheet" />
+}

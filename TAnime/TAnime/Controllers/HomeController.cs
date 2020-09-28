@@ -115,6 +115,14 @@ namespace TAnime.Controllers
                 throw e;
             }
         }
+
+        [Route("Home/DetailVideos/{movieId}")]
+        public IActionResult DetailVideos(int movieId)
+        {
+            var movie = animeRepository.GetMovieViewModel(movieId);
+            return View(movie);
+        }
+
         public IActionResult Search(string searchString)
         {
             var links = animeRepository.GetMovies().ToList();

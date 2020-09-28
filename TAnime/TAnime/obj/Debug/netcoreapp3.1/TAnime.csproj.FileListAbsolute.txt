@@ -499,3 +499,4 @@ D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\X.PagedList.W
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\TAnime.csproj.CoreCompileInputs.cache
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\TAnime.MvcApplicationPartsAssemblyInfo.cs
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\TAnime.MvcApplicationPartsAssemblyInfo.cache
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Home\DetailVideos.cshtml.g.cs
