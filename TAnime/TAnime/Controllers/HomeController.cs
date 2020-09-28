@@ -35,12 +35,23 @@ namespace TAnime.Controllers
             var movies = animeRepository.GetMovies().ToList();
             return View(movies);
         }
+
+
         [Route("Home/IndexMovieOfCateGory/{categoryId}")]
         public IActionResult IndexMovieOfCateGory(int categoryId)
         {
             var movies = animeRepository.GetMoviesOfCategory(categoryId).ToList();
             return View(movies);
         }
+
+
+        [Route("Home/IndexMovieOfCountry/{coutryId}")]
+        public IActionResult IndexMovieOfCountry(int countryId)
+        {
+            var movies = animeRepository.GetMoviesOfCountry(countryId).ToList();
+            return View(movies);
+        }
+
         public IActionResult Detail(int? id)
         {
             try
@@ -58,6 +69,15 @@ namespace TAnime.Controllers
 
                 throw e;
             }
+        }
+        public IActionResult Search(string searchString)
+        {
+            var links = animeRepository.GetMovies().ToList();
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                links = links.Where(s => s.MovieName.Contains(searchString)).ToList();
+            }
+            return View(links);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

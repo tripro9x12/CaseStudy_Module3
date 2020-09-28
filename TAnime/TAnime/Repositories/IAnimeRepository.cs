@@ -11,6 +11,8 @@ namespace TAnime.Services
     {
         IEnumerable<MovieViewModel> GetMovies();
         IEnumerable<MovieViewModel> GetMoviesOfCategory(int CategoryId);
+        IEnumerable<MovieViewModel> GetMoviesOfCountry(int countryId);
+
         MovieViewModel GetMovieViewModel(int id);
         Movie GetMovie(int id);
         GetMovie GetMovieView(int id);

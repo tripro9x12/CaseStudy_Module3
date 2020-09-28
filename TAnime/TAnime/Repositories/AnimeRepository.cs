@@ -209,5 +209,19 @@ namespace TAnime.Services
             }
             return movies;
         }
+
+        public IEnumerable<MovieViewModel> GetMoviesOfCountry(int countryId)
+        {
+            var model = GetMovies().ToList();
+            List<MovieViewModel> movies = new List<MovieViewModel>();
+            foreach(var items in model)
+            {
+                if(items.CountryId == countryId)
+                {
+                    movies.Add(items);
+                }
+            }
+            return movies;
+        }
     }
 }
