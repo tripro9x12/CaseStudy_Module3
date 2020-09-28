@@ -21,7 +21,7 @@
             Thể Loại:
             @foreach (var item in Model.Categories)
             {
-                <a asp-controller="Home" asp-action="" asp-route-id="">@item</a>
+                <a asp-controller="Home" asp-action="IndexMovieOfCateGory" asp-route-id="@item.CategoryId">@item.categoryName</a>
             }
         </p>
         <h5>Nội Dung Phim</h5>

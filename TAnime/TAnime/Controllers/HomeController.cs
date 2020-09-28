@@ -21,7 +21,7 @@ namespace TAnime.Controllers
 
         public HomeController(ILogger<HomeController> logger,
                               IAnimeRepository animeRepository,
-                               ICategoryRepository categoryRepository,                             
+                               ICategoryRepository categoryRepository,
                                ICountryRepository countryRepository)
         {
             _logger = logger;
@@ -32,8 +32,14 @@ namespace TAnime.Controllers
 
         public IActionResult Index()
         {
-            var movie = animeRepository.GetMovies().ToList();
-            return View(movie);
+            var movies = animeRepository.GetMovies().ToList();
+            return View(movies);
+        }
+        [Route("Home/IndexMovieOfCateGory/{categoryId}")]
+        public IActionResult IndexMovieOfCateGory(int categoryId)
+        {
+            var movies = animeRepository.GetMoviesOfCategory(categoryId).ToList();
+            return View(movies);
         }
         public IActionResult Detail(int? id)
         {

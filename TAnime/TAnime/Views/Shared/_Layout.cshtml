@@ -45,7 +45,7 @@
                             <ul class="sub-menu">
                                 @foreach (var item in context.Categories)
                                 {
-                                    <li><a href="">@item.categoryName</a></li>
+                                    <li><a asp-controller="Home" asp-action="IndexMovieOfCateGory" asp-route-id="@item.CategoryId">@item.categoryName</a></li>
 
                                 }
                             </ul>
@@ -79,7 +79,7 @@
                     <h4>Thể Loại</h4>
                     @foreach(var item in context.Categories)
                     {
-                        <a href="#">@item.categoryName</a>
+                        <a asp-controller="Home" asp-action="IndexMovieOfCateGory" asp-route-id="@item.CategoryId">@item.categoryName</a>
                     }
                 </div>
             </div>

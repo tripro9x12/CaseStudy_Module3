@@ -146,7 +146,7 @@ namespace TAnime.Services
                 movie.Categories = (from c in context.Categories
                                     join mc in context.MovieCategories on c.CategoryId equals mc.CategoryId
                                     where mc.MovieId == movie.MovieId
-                                    select c.categoryName).ToList();
+                                    select c).ToList();
             }
            
             return movies;
@@ -191,6 +191,23 @@ namespace TAnime.Services
                                             MovieName = m.MovieName
                                         }).ToList();
             return ListMovies;
+        }
+
+        public IEnumerable<MovieViewModel> GetMoviesOfCategory(int CategoryId)
+        {
+            var model = GetMovies().ToList();
+            List <MovieViewModel> movies= new List<MovieViewModel>();
+            foreach (var items in model)
+            {
+                foreach (var item in items.Categories)
+                {
+                    if(item.CategoryId == CategoryId)
+                    {
+                        movies.Add(items);
+                    }
+                }
+            }
+            return movies;
         }
     }
 }
