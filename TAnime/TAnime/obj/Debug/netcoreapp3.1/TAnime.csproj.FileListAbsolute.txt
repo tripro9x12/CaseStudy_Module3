@@ -97,9 +97,6 @@ D:\C0520G1\Module_3\TAnime\TAnime\bin\Debug\netcoreapp3.1\runtimes\win\lib\netco
 D:\C0520G1\Module_3\TAnime\TAnime\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\TAnime.AssemblyInfoInputs.cache
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\TAnime.AssemblyInfo.cs
-D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\TAnime.csproj.CoreCompileInputs.cache
-D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\TAnime.MvcApplicationPartsAssemblyInfo.cs
-D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\TAnime.MvcApplicationPartsAssemblyInfo.cache
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\TAnime.RazorAssemblyInfo.cache
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\TAnime.RazorAssemblyInfo.cs
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\appsettings.Development.json
@@ -494,3 +491,11 @@ D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\H
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Home\IndexMovieOfCateGory.cshtml.g.cs
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Home\Search.cshtml.g.cs
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Home\IndexMovieOfCountry.cshtml.g.cs
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\X.PagedList.dll
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\X.PagedList.Mvc.Core.dll
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\X.PagedList.Web.Common.dll
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\TAnime.csproj.CoreCompileInputs.cache
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\TAnime.MvcApplicationPartsAssemblyInfo.cs
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\TAnime.MvcApplicationPartsAssemblyInfo.cache

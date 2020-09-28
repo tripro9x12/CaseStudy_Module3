@@ -138,7 +138,8 @@ namespace TAnime.Services
                           Content = m.Content,
                           Country = c.CountryName,
                           Time = m.Time, 
-                          ImageOfVideo = m.ImageOfVideo
+                          ImageOfVideo = m.ImageOfVideo,
+                          CountryId = c.CountryId
                       }).ToList();
             
             foreach (var movie in movies)

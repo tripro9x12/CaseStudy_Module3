@@ -105,7 +105,7 @@ div ul .input-group.md-form.form-sm.form-2 button {
     line-height: 30px;
     background: #1e262d;
 }
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
     #nav-menu #menu #menu-item li{
         border-right: 0 !important;
     }

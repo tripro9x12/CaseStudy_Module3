@@ -1,4 +1,6 @@
-﻿@model List<MovieViewModel>
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@model IPagedList<MovieViewModel>
 @{
     ViewData["Title"] = "TAnime - Xem phim hoạt hình miễn phí";
 }
@@ -8,14 +10,41 @@
 <div class="row mt-3" style="box-sizing: border-box !important">
     @foreach (var item in Model)
     {
-    <div class="product">
-        <a asp-controller="Home" asp-action="Detail" asp-route-id="@item.MovieId" class="pr-2">
-            <img src="~/images/@item.ImageOfVideo"/>
-            <div>
-                <img src="~/images/overlays-video.png" class="overlay" />
-            </div>
-            <p class="pr-2">@item.MovieName</p>
-        </a>
-    </div>
+        <div class="product">
+            <a asp-controller="Home" asp-action="Detail" asp-route-id="@item.MovieId" class="pr-2">
+                <img src="~/images/@item.ImageOfVideo" />
+                <div>
+                    <img src="~/images/overlays-video.png" class="overlay" />
+                </div>
+                <p class="pr-2">@item.MovieName</p>
+            </a>
+        </div>
     }
 </div>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+<style>
+    .pagination-container .pagination li{
+        text-align: center;
+        padding: 0 !important;
+        height: 20px;
+        width: 20px;
+    }
+    .pagination-container .pagination li span {
+        color: white !important;
+        font-weight: 600 !important;
+        background: #ff6a00;
+        padding: 0px 5px;
+        border: 1px solid #fff;
+    }
+    .pagination-container .pagination li a {
+        color: white !important;
+        padding: 0 5px;
+        border: 1px solid #fff;
+    }
+    .pagination-container .pagination li a:hover {
+        text-decoration: none !important;
+        background: #ff6a00;
+    }
+</style>
