@@ -16,7 +16,7 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow">
             <div class="container">
                 <a class="navbar-brand logo" asp-controller="Home" asp-action="Index">TAnime</a>
-                <div class="collapse navbar-collapse d-sm-inline-flex flex-sm-row-reverse">
+                <div class="collapse navbar-collapse d-sm-inline-flex flex-sm-row-reverse search-1">
                     <ul class="navbar-nav ">
                         <li class="input-group md-form form-sm form-2 pl-0" style="width: 100%;">
                             <form asp-controller="Home" asp-action="Search" method="get" style="width: 100%;">
@@ -67,6 +67,23 @@
                         </li>
                         <li><a href="~/Home/Index">Mới Cập Nhật</a></li>
                         <li><a href="~/Home/Index">Xem Nhiều</a></li>
+                    </ul>
+
+
+                    <ul class="navbar-nav search-2">
+                        <li class="input-group md-form form-sm form-2 pl-0" style="width: 100%;">
+                            <form asp-controller="Home" asp-action="Search" method="get" style="width: 100%;">
+                                <input class="form-control my-0 py-1 green-border" type="text" placeholder="Tìm kiếm....." aria-label="Search" id="searchString" name="searchString">
+                                <div class="input-group-append">
+
+                                    <button class="input-group-text red lighten-3" id="basic-text1" type="submit">
+                                        <i class="fas fa-search text-grey"
+                                           aria-hidden="true"></i>
+                                    </button>
+
+                                </div>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>

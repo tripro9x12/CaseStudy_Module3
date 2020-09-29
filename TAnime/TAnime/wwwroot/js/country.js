@@ -1,5 +1,6 @@
 ﻿var country = country || {};
 
+
 country.delete = (id) => {
     bootbox.confirm({
         title: "Cảnh báo!!!",

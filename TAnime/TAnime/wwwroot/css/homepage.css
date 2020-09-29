@@ -54,6 +54,9 @@ div ul .input-group.md-form.form-sm.form-2 button {
 #nav-menu #menu #menu-item li a {
     color: white !important;
 }
+#nav-menu #menu .search-2{
+    display: none;
+}
 #menu li a:hover {
     text-decoration: none !important;
 }
@@ -117,5 +120,25 @@ div ul .input-group.md-form.form-sm.form-2 button {
         width: 100% !important;
         text-align: center;
         z-index: 1;
+    }
+}
+@media screen and (max-width: 576px){
+    #nav-menu #menu > button{
+        margin-left: 10px;
+        border: 1px solid #090909;
+    }
+    .container .search-1 {
+        display: none;
+    }
+    #nav-menu #menu .search-2{
+        display: block;
+        margin-bottom: 20px;
+    }
+    #nav-menu #menu .search-2 li {
+        margin-left: 140px;
+        display: block;
+    }
+    #nav-menu #menu .search-2 li:hover{
+        background: none;
     }
 }

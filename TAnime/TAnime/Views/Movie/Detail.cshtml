@@ -11,7 +11,13 @@
     <div class="col-7">
         <h3>@Model.MovieName</h3>
         <p>Quốc gia: @Model.Country</p>
-        <p>Thể Loại: @string.Join(", ", Model.Categories)</p>
+        <p>
+            Thể Loại:
+            @foreach (var item in Model.Categories)
+            {
+                <span>@item.categoryName</span>
+            }
+        </p>
         <p>Ngày Đăng: @Model.Time.ToString("dd/MM/yyyy")</p>
         <h5>Thông tin truyện</h5>
         <p>@Model.Content</p>

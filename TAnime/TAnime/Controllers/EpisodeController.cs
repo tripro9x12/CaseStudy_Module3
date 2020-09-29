@@ -62,8 +62,6 @@ namespace TAnime.Controllers
                     DateTime = model.DateTime,
                     VideoPath = model.VideoPath
                 };
-                var fileName = string.Empty;
-                episode.VideoPath = fileName;
                 if(episodeRepository.CreateEpisode(episode) > 0)
                 {
                     return RedirectToAction("Index", "Episode");

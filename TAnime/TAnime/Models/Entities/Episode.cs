@@ -9,8 +9,7 @@ namespace TAnime.Models.Entities
 {
     public class Episode
     {
-        public int EpisodeId { get; set; }
-        [MaxLength(200)]
+        public int EpisodeId { get; set; }    
         [Required]
         public string VideoPath { get; set; }
         [MaxLength(50)]

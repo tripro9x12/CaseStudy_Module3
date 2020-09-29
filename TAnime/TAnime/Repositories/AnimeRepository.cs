@@ -108,20 +108,21 @@ namespace TAnime.Services
         {
             IEnumerable<MovieViewModel> movies = new List<MovieViewModel>();
             movies = GetMovies().ToList();
+            List<Episode> episodes = new List<Episode>();
             foreach(var movie in movies)
             {
-                movie.Episodes = (from m in context.Movies
-                                  join e in context.Episodes on m.MovieId equals e._MovieId
-                                  select new Episode()
-                                  {
-                                      
-                                      _MovieId = m.MovieId,
-                                      DateTime = e.DateTime,
-                                      EpisodeId = e.EpisodeId,
-                                      EpisodeCode = e.EpisodeCode,
-                                      EpisodeMovie = e.EpisodeMovie,
-                                      VideoPath = e.VideoPath
-                                  }).ToList();
+                if(movie.MovieId == id)
+                {
+                   foreach(var item in context.Episodes)
+                   {
+                        if(item._MovieId == id)
+                        {
+                            episodes.Add(item);
+                        }
+                   }
+                    movie.Episodes = episodes;
+                    return movie;
+                }
             }
             return movies.FirstOrDefault(m=>m.MovieId == id);
         }

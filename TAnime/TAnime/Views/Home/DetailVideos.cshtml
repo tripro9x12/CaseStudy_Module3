@@ -9,9 +9,58 @@
     <a asp-controller="Home" asp-action="IndexMovieOfCountry" asp-route-id="@Model.CountryId">HH @Model.Country</a>&nbsp;<i class="fas fa-angle-double-right" style="font-size:14px;"></i>&nbsp;
     <span>@Model.MovieName</span>
 </div>
-<div>
+<div class="mt-5">
 
 </div>
+<div class="detail-info-video">
+    <p>
+        Thể Loại:
+        @foreach (var item in Model.Categories)
+        {
+            <a asp-controller="Home" asp-action="IndexMovieOfCateGory" asp-route-id="@item.CategoryId">@item.categoryName</a>
+        }
+    </p>
+    <div>
+        @foreach (var video in Model.Episodes)
+        {
+            <div class="video">
+                @Html.Raw(video.VideoPath)   
+                <div class="video-icon">
+                    <ul>
+                        <li>
+                            <i class="far fa-thumbs-up mr-1"></i>Thích
+                        </li>
+                        <li>
+                            Chia sẻ
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="video-info">
+                    <h5>@Model.MovieName - @video.EpisodeMovie</h5>
+                    <p>Ngày đăng: @video.DateTime.ToString("dd/MM/yyyy")</p>
+                    <label for="checkContent" id="check">
+                        Nội Dung Phim <i class="fa fa-caret-down ml-1"></i>
+                    </label>
+                    <input type="checkbox" id="checkContent" />
+                    <div id="contentMovie">
+                        @Model.Content
+                    </div>
+                </div>
+            </div>
+        
+        }
+    </div>
+    <ul>
+        Chọn tập:
+        @for (int i = 1; i <= Model.Episodes.Count; i++)
+        {
+            <li><a href="#" onclick="getEp(@i);" class="check">@i</a></li>
+        }
+    </ul>
+</div>
+
 @section Scripts{
-    <link href="~/css/detail_Info.css" rel="stylesheet" />
-}
+    <link href="~/css/detail_infoVideo.css" rel="stylesheet" />
+    <script src="~/js/selectVideo.js"></script>
+ }
