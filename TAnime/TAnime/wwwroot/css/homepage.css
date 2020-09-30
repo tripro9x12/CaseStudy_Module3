@@ -108,6 +108,9 @@ div ul .input-group.md-form.form-sm.form-2 button {
     line-height: 30px;
     background: #1e262d;
 }
+#footer p{
+    margin-bottom: 0 !important;
+}
 @media screen and (max-width: 768px) {
     #nav-menu #menu #menu-item li{
         border-right: 0 !important;
@@ -116,7 +119,7 @@ div ul .input-group.md-form.form-sm.form-2 button {
         width: 100% !important;
         z-index: 1;
     }
-    #nav-menu #menu #menu-item .sub-menu > li{
+    #nav-menu #menu #menu-item .sub-menu > li {
         width: 100% !important;
         text-align: center;
         z-index: 1;
@@ -132,11 +135,12 @@ div ul .input-group.md-form.form-sm.form-2 button {
     }
     #nav-menu #menu .search-2{
         display: block;
-        margin-bottom: 20px;
+        margin: 0 auto 20px auto;
     }
     #nav-menu #menu .search-2 li {
-        margin-left: 140px;
-        display: block;
+
+        width: 100%;
+        margin: auto;
     }
     #nav-menu #menu .search-2 li:hover{
         background: none;

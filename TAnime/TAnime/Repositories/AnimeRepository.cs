@@ -132,6 +132,7 @@ namespace TAnime.Services
             IEnumerable<MovieViewModel> movies = new List<MovieViewModel>();
             movies = (from m in context.Movies
                       join c in context.Countries on m._CountryId equals c.CountryId
+                      orderby m.MovieId descending
                       select new MovieViewModel()
                       {
                           MovieId = m.MovieId,

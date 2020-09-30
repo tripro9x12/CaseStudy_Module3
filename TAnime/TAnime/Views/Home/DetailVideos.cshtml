@@ -39,17 +39,20 @@
                 <div class="video-info">
                     <h5>@Model.MovieName - @video.EpisodeMovie</h5>
                     <p>Ngày đăng: @video.DateTime.ToString("dd/MM/yyyy")</p>
-                    <label for="checkContent" id="check">
-                        Nội Dung Phim <i class="fa fa-caret-down ml-1"></i>
-                    </label>
-                    <input type="checkbox" id="checkContent" />
-                    <div id="contentMovie">
-                        @Model.Content
-                    </div>
+                    
                 </div>
             </div>
         
         }
+    </div>
+    <div class="contentMovie">
+        <label for="checkContent" id="check">
+            Nội Dung Phim <i class="fa fa-caret-down ml-1"></i>
+        </label>
+        <input type="checkbox" id="checkContent" />
+        <div id="contentMovie">
+            @Model.Content
+        </div>
     </div>
     <ul>
         Chọn tập:
