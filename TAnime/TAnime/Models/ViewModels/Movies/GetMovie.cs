@@ -19,6 +19,8 @@ namespace TAnime.Models.ViewModels.Movies
         [DataType(DataType.Time)]
         public DateTime Time { get; set; }
         public int _CountryId { get; set; }
+        public int View { get; set; }
+        public bool IsFinish { get; set; }
         public List<int> Categories { get; set; }
     }
 }

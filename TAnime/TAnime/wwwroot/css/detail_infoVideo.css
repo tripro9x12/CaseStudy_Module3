@@ -59,6 +59,16 @@
 .video .video-icon{
     margin-left:10px;
     margin-top: 0;
+    display: flex;
+}
+.video .video-icon ul{
+    justify-content: space-between;
+}
+.video .video-icon ul:last-child > li{
+    float: right;
+    margin-right: 30px;
+    font-size: 16px;
+    background: #02bba9;
 }
 .video .video-icon ul li {
     background: #0891d7;

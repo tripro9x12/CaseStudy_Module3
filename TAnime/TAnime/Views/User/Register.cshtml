@@ -1,0 +1,99 @@
+﻿@model RegisterUserViewModel
+@{
+    ViewBag.Title = "Register User";
+}
+<form enctype="multipart/form-data" asp-controller="User" asp-action="Register" method="post" class="mt-2" runat="server">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="row">
+        <div class="col-sm-2 form-group">
+            <label asp-for="Email"></label>
+        </div>
+        <div class="col-sm-10 form-group">
+            <input type="text" asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 form-group">
+            <label asp-for="Password"></label>
+        </div>
+        <div class="col-sm-10 form-group">
+            <input type="password" asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 form-group">
+            <label asp-for="ConfirmPassword"></label>
+        </div>
+        <div class="col-sm-10 form-group">
+            <input type="password" asp-for="ConfirmPassword" class="form-control" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 form-group">
+            <label asp-for="City"></label>
+        </div>
+        <div class="col-sm-10 form-group">
+            <input type="text" asp-for="City" class="form-control" />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 form-group">
+            <label asp-for="Address"></label>
+        </div>
+        <div class="col-sm-10 form-group">
+            <input type="text" asp-for="Address" class="form-control" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 form-group">
+            <label asp-for="ImagePath"></label>
+        </div>
+        <div class="col-sm-10 form-group">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="imgChose" asp-for="ImagePath">
+                <label class="custom-file-label" for="customFile">Chọn tệp</label>
+            </div>
+            <img src="#" id="imgShow" alt=" Your Image" style="margin-top: 10px;"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 form-group text-center">
+            <button type="submit" class="btn btn-primary">Đăng Ký</button>
+            <a asp-controller="User" asp-action="Index" class="btn btn-warning">Trở Lại</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            $(".custom-file-input").on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            });
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgShow').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+
+        $("#imgChose").change(function () {
+            readURL(this);
+        });
+
+      
+    </script>
+}

@@ -144,7 +144,7 @@ namespace TAnime.Services
         public IEnumerable<MovieViewModel> GetMovies()
         {
             IEnumerable<MovieViewModel> movies = new List<MovieViewModel>();
-            movies = (from m in context.Movies
+            movies = (from m in context.Movies where m.IsDelete == false
                       join c in context.Countries on m._CountryId equals c.CountryId
                       orderby m.MovieId descending
                       select new MovieViewModel()
@@ -155,14 +155,16 @@ namespace TAnime.Services
                           Country = c.CountryName,
                           Time = m.Time, 
                           ImageOfVideo = m.ImageOfVideo,
-                          CountryId = c.CountryId
+                          CountryId = c.CountryId,
+                          View = m.View,
+                          IsFinish = m.isFinish
                       }).ToList();
             
             foreach (var movie in movies)
             {
-                movie.Categories = (from c in context.Categories
+                movie.Categories = (from c in context.Categories where c.IsDelete == false
                                     join mc in context.MovieCategories on c.CategoryId equals mc.CategoryId
-                                    where mc.MovieId == movie.MovieId
+                                    where mc.MovieId == movie.MovieId 
                                     select c).ToList();
             }
            
@@ -186,11 +188,13 @@ namespace TAnime.Services
                           Time = m.Time,
                           Content = m.Content,
                           ImageOfVideo = m.ImageOfVideo,
-                          _CountryId = c.CountryId
+                          _CountryId = c.CountryId,
+                          View = m.View,
+                          IsFinish = m.isFinish
                       }).ToList();
             foreach (var movie in movies)
             {
-                movie.Categories = (from c in context.Categories
+                movie.Categories = (from c in context.Categories where c.IsDelete == false
                                     join mc in context.MovieCategories on c.CategoryId equals mc.CategoryId
                                     where mc.MovieId == movie.MovieId
                                     select c.CategoryId).ToList();
@@ -239,6 +243,43 @@ namespace TAnime.Services
                 }
             }
             return movies;
+        }
+
+        public int changeFinish(int id, bool isFinish)
+        {
+            var changeMovie = GetMovie(id);
+            if(changeMovie != null)
+            {
+                changeMovie.isFinish = isFinish;
+            }
+            context.Movies.Update(changeMovie);
+            return context.SaveChanges();
+        }
+        public int UpdateView(int id)
+        {
+            var updateMovie = GetMovie(id);
+            if(updateMovie != null)
+            {
+                updateMovie.View += 1;
+            }
+            context.Movies.Update(updateMovie);
+            return context.SaveChanges();
+        }
+
+        public IEnumerable<MovieViewModel> GetMoviesOfFinish(int finishId)
+        {
+            bool isFinish = finishId == 1 ? true : false;
+            var movies = GetMovies().ToList().Where(m => m.IsFinish == isFinish);
+            return movies;
+        }
+
+        public IEnumerable<MovieViewModel> GetMoviesOfView()
+        {
+            var movies = GetMovies().ToList();
+            var orderbyResult = from m in movies
+                                orderby m.View descending
+                                select m;
+            return orderbyResult.ToList();
         }
     }
 }

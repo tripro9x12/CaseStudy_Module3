@@ -18,5 +18,7 @@ namespace TAnime.Models.ViewModels.Movies
         public List<Category> Categories { get; set; }
         public List<Episode> Episodes { get; set; }
         public int CountryId { get; set; }
+        public int View { get; set; }
+        public bool IsFinish { get; set; }
     }
 }

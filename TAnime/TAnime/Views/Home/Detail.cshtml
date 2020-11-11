@@ -17,6 +17,7 @@
         <h4>Tên Phim: @Model.MovieName</h4>
         <p>Quốc Gia: @Model.Country</p>
         <p>Ngày Đăng: @Model.Time.ToString("dd/MM/yyyy")</p>
+        <p>Lượt xem: @Model.View</p>
         <p>
             Thể Loại:
             @foreach (var item in Model.Categories)

@@ -2,11 +2,13 @@
 @{
     //var title = Model.MovieName != null ? Model.MovieName : " ";
     ViewBag.Title = $"Xem {Model.MovieName}";
+    var movies = ViewBag.MoviesByCountry as List<MovieViewModel>;
 
 }
 <div class="mt-3 detail-info text-white">
     <a asp-controller="Home" asp-action="Index">Trang Chủ</a>&nbsp;<i class="fas fa-angle-double-right" style="font-size:14px;"></i>&nbsp;
     <a asp-controller="Home" asp-action="IndexMovieOfCountry" asp-route-id="@Model.CountryId">HH @Model.Country</a>&nbsp;<i class="fas fa-angle-double-right" style="font-size:14px;"></i>&nbsp;
+    <input hidden id=movie-id value="@Model.MovieId">
     <span>@Model.MovieName</span>
 </div>
 <div class="mt-5">
@@ -24,7 +26,7 @@
         @foreach (var video in Model.Episodes)
         {
             <div class="video">
-                @Html.Raw(video.VideoPath)   
+                @Html.Raw(video.VideoPath)
                 <div class="video-icon">
                     <ul>
                         <li>
@@ -34,15 +36,17 @@
                             Chia sẻ
                         </li>
                     </ul>
-
+                    <ul>
+                        <li>Lượt xem: @Model.View</li>
+                    </ul>
                 </div>
                 <div class="video-info">
                     <h5>@Model.MovieName - @video.EpisodeMovie</h5>
                     <p>Ngày đăng: @video.DateTime.ToString("dd/MM/yyyy")</p>
-                    
+
                 </div>
             </div>
-        
+
         }
     </div>
     <div class="contentMovie">
@@ -63,7 +67,26 @@
     </ul>
 </div>
 
+<div class="row mt-4 text-white">
+    <h4>Phim Hoạt Hình Liên Quan</h4>
+</div>
+<div class="row mt-2" style="box-sizing: border-box !important;">
+    @foreach (var item in movies)
+    {
+        <div class="product">
+            <a asp-controller="Home" asp-action="Detail" asp-route-id="@item.MovieId" class="pr-2">
+                <img src="~/images/@item.ImageOfVideo" />
+                <div>
+                    <img src="~/images/overlays-video.png" class="overlay" />
+                </div>
+                <p class="pr-2" style="overflow:hidden;height:35px">@item.MovieName</p>
+            </a>
+        </div>
+    }
+</div>
+
+
 @section Scripts{
     <link href="~/css/detail_infoVideo.css" rel="stylesheet" />
     <script src="~/js/selectVideo.js"></script>
- }
+}

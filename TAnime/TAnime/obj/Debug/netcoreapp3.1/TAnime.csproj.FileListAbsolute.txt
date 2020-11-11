@@ -125,8 +125,6 @@ D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\refs\Microsof
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Connections.Abstractions.dll
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.CookiePolicy.dll
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Cors.dll
-D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Cryptography.Internal.dll
-D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.DataProtection.Abstractions.dll
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.DataProtection.dll
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.DataProtection.Extensions.dll
@@ -205,8 +203,6 @@ D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\refs\Microsof
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Hosting.Abstractions.dll
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Hosting.dll
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Http.dll
-D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Identity.Core.dll
-D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Identity.Stores.dll
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Localization.Abstractions.dll
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Localization.dll
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Logging.Configuration.dll
@@ -500,3 +496,13 @@ D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\TAnime.csproj
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\TAnime.MvcApplicationPartsAssemblyInfo.cs
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\TAnime.MvcApplicationPartsAssemblyInfo.cache
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Home\DetailVideos.cshtml.g.cs
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\User\Register.cshtml.g.cs
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\User\Login.cshtml.g.cs
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Home\IndexMovieOfFinish.cshtml.g.cs
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Home\IndexMovieOfView.cshtml.g.cs

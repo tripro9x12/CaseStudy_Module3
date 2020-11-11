@@ -10,7 +10,7 @@
                 <th>#ID</th>
                 <th>Tên Phim</th>
                 <th>Quốc Gia</th>
-                <th>Thể Loại</th>
+                <th>Trạng Thái</th>
                 <th>Ngày</th>
                 <th style="width:12%">Thao tác</th>
             </tr>
@@ -18,17 +18,15 @@
         <tbody class="bg-light">
             @foreach (var movie in Model)
             {
+
                 <tr>
                     <td>@movie.MovieId</td>
                     <td>@movie.MovieName</td>
-                    <td>@movie.Country</td>
+                     <td>@movie.Country</td>
                     <td>
-                        @foreach (var mov in movie.Categories)
-                        {
-                            <p>@mov.categoryName</p>
-                        }
+                        <a href="javascripts:;" onclick="movie.changeFinish(@movie.MovieId, '@movie.IsFinish')" class="@(movie.IsFinish == false ? "btn btn-info" : "btn btn-success" )" style="width:160px;">@(movie.IsFinish == false ? "Chưa Hoàn Thành" : "Hoàn Thành")</a>
                     </td>
-                    <td>@movie.Time</td>
+                    <td>@movie.Time.ToString("dd/MM/yyyy")</td>
                     <td>
                         <a asp-controller="Movie" asp-action="Detail" asp-route-id="@movie.MovieId" class="text-info"><i class="fas fa-eye"></i></a>
                         <a asp-controller="Movie" asp-action="Edit" asp-route-id="@movie.MovieId" class="text-primary"><i class="fas fa-edit"></i></a>

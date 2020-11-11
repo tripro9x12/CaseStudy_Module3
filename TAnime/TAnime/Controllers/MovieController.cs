@@ -106,7 +106,9 @@ namespace TAnime.Controllers
                 Content = anime.Content,
                 Time = anime.Time,
                 CountryId = anime._CountryId,
-                categories = anime.Categories
+                categories = anime.Categories,
+                isFinish = anime.IsFinish,
+                View = anime.View
             };
             ViewBag.Categories = GetCategories();
             ViewBag.Coutries = GetCoutries();
@@ -120,6 +122,11 @@ namespace TAnime.Controllers
                 var fileName = string.Empty;
                 if(model.Image != null)
                 {
+                    if(model.ImageOfVideo != null)
+                    {
+                        var delFile = Path.Combine(webHostEnvironment.WebRootPath, "images", model.ImageOfVideo);
+                        System.IO.File.Delete(delFile);
+                    }
                     var UploadFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
                     fileName = $"{Guid.NewGuid()}_{model.Image.FileName}";
                     var filePath = Path.Combine(UploadFolder, fileName);
@@ -127,8 +134,8 @@ namespace TAnime.Controllers
                     {
                         model.Image.CopyTo(fs);
                     }
+                    model.ImageOfVideo = fileName;
                 }
-                model.ImageOfVideo = fileName;
                 if(animeRepository.EditMovie(model) > 0)
                 {
                     return RedirectToAction("Index", "Movie");
@@ -137,12 +144,38 @@ namespace TAnime.Controllers
             return View();
         }
         [Route("Movie/Delete/{MovieId}")]
-        public IActionResult Delete(int MovieId)
+        public JsonResult Delete(int MovieId)
         {
 
             var delMovie = animeRepository.DeleteMovie(MovieId);
             return Json(new { delMovie });
 
+        }
+
+        [Route("/Movie/ChangeIsFinish/{id}/{isFinish}")]
+        public JsonResult ChangeIsFinish(int id, string isFinish)
+        {
+            bool isStatus;
+            if(isFinish.ToLower() == "false")
+            {
+                isStatus = true;
+            }else if(isFinish.ToLower() == "true")
+            {
+                isStatus = false;
+            }
+            else
+            {
+                isStatus = false;
+            }
+            
+            var change = animeRepository.changeFinish(id, isStatus);
+            return Json(new { change });
+        }
+        [Route("/Movie/UpdateView/{id}")]
+        public JsonResult UpdateView(int id)
+        {
+            var updateMovie = animeRepository.UpdateView(id);
+            return Json(new { updateMovie });
         }
 
         private List<CategoryViewModel> GetCategories()

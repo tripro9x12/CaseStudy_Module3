@@ -6,16 +6,19 @@
     <a asp-controller="Home" asp-action="Index">Mới Cập Nhật</a>
 </div>
 <div class="row mt-3" style="box-sizing: border-box !important">
-    @foreach (var item in Model)
+    @if (Model != null)
     {
-        <div class="product">
-            <a asp-controller="Home" asp-action="Detail" asp-route-id="@item.MovieId" class="pr-2">
-                <img src="~/images/@item.ImageOfVideo" />
-                <div>
-                    <img src="~/images/overlays-video.png" class="overlay" />
-                </div>
-                <p class="pr-2" style="overflow:hidden;height:35px">@item.MovieName</p>
-            </a>
-        </div>
+        @foreach (var item in Model)
+        {
+            <div class="product">
+                <a asp-controller="Home" asp-action="Detail" asp-route-id="@item.MovieId" class="pr-2">
+                    <img src="~/images/@item.ImageOfVideo" />
+                    <div>
+                        <img src="~/images/overlays-video.png" class="overlay" />
+                    </div>
+                    <p class="pr-2" style="overflow:hidden;height:35px">@item.MovieName</p>
+                </a>
+            </div>
+        }
     }
 </div>

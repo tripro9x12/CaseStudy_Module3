@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TAnime.Models;
+using TAnime.Models.Identities;
 using TAnime.Repositories;
 using TAnime.Services;
 using TAnime.Services_Repository;
@@ -36,7 +38,7 @@ namespace TAnime
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IEpisodeRepository, EpisodeRepository>();
             services.AddScoped<ICountryRepository, CountryRepository>();
-
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

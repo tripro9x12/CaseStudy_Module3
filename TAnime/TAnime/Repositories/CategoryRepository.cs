@@ -27,8 +27,9 @@ namespace TAnime.Services_Repository
             var delCategory = Get(id);
             if(delCategory != null)
             {
-                context.Categories.Remove(delCategory);
+                delCategory.IsDelete = true;              
             }
+            context.Categories.Update(delCategory);
             return context.SaveChanges();
         }
 
@@ -53,7 +54,7 @@ namespace TAnime.Services_Repository
         public IEnumerable<CategoryViewModel> Gets()
         {
             IEnumerable<CategoryViewModel> models = new List<CategoryViewModel>();
-            models = from c in context.Categories
+            models = from c in context.Categories where c.IsDelete == false
                     select (new CategoryViewModel()
                     {
                         CategoryId = c.CategoryId,

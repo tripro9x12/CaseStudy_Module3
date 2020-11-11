@@ -1,0 +1,25 @@
+﻿.pagination-container .pagination li {
+    text-align: center;
+    padding: 0 !important;
+    height: 20px;
+    width: 20px;
+}
+
+.pagination-container .pagination li span {
+    color: white !important;
+    font-weight: 600 !important;
+    background: #ff6a00;
+    padding: 0px 5px;
+    border: 1px solid #fff;
+}
+
+.pagination-container .pagination li a {
+    color: white !important;
+    padding: 0 5px;
+    border: 1px solid #fff;
+}
+
+.pagination-container .pagination li a:hover {
+    text-decoration: none !important;
+    background: #ff6a00;
+}

@@ -1,0 +1,37 @@
+﻿@model List<UserViewModel>
+@{
+    ViewBag.Title = "User Management";
+}
+<h3>@ViewBag.Title</h3>
+<table class="table table-bordered table-hover mt-2" style="font-size: 12px !important" id="iduser">
+    <thead>
+        <tr class="thead-dark">
+            <th>UserId</th>
+            <th>Email</th>
+            <th>City</th>
+            <th>Address</th>
+            <th>Roles</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.UserId</td>
+                    <td>@user.Email</td>
+                    <td>@user.City</td>
+                    <td>@user.Address</td>
+                    <td>@user.RolesName</td>
+
+                    <td>
+                        <a asp-controller="User" asp-action="Edit" asp-route-id="@user.UserId" class="btn btn-warning">Chỉnh sửa</a>
+                        <a href="javascript:void(0)" class="btn btn-danger btnn" onclick="user.delete(@user.UserId)">Xóa</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -97,6 +97,21 @@ namespace TAnime.Controllers
             return View(movies);
         }
 
+        [Route("Home/IndexMovieOfFinish/{finishId}")]
+        public IActionResult IndexMovieOfFinish(int finishId)
+        {
+            var movies = animeRepository.GetMoviesOfFinish(finishId).ToList();
+            return View(movies);
+        }
+        [Route("Home/IndexMovieOfView")]
+        public IActionResult IndexMovieOfView(int? page)
+        {
+            int pageSize = 12;
+            int pageNumber = (page ?? 1);
+            var movies = animeRepository.GetMoviesOfView().ToPagedList(pageNumber, pageSize);
+            return View(movies);
+        }
+
         public IActionResult Detail(int? id)
         {
             try
@@ -120,6 +135,29 @@ namespace TAnime.Controllers
         public IActionResult DetailVideos(int movieId)
         {
             var movie = animeRepository.GetMovieViewModel(movieId);
+            var moviesByCountry = animeRepository.GetMoviesOfCountry(movie.CountryId).ToList();
+            var movies = new List<MovieViewModel>();
+            if (moviesByCountry.Count >= 8)
+            {
+               foreach(var item in moviesByCountry)
+                {
+                    if(movies.Count < 8 && movie.MovieName != item.MovieName)
+                    {
+                        movies.Add(item);
+                    }
+                }             
+            }
+            else
+            {
+                foreach (var item in moviesByCountry)
+                {
+                    if (movie.MovieName != item.MovieName)
+                    {
+                        movies.Add(item);
+                    }
+                }
+            }      
+            ViewBag.MoviesByCountry = movies;
             return View(movie);
         }
 
@@ -145,7 +183,7 @@ namespace TAnime.Controllers
                 }
                 return View(newList);
             }
-            return null;
+            return View();
         }
 
 
