@@ -7,11 +7,11 @@
 }
 <div class="container">
     <form enctype="multipart/form-data" asp-controller="Movie" asp-action="Edit" method="post" class="mt-2">
-        <input hidden asp-for="MovieId" value="@Model.MovieId"/>
-        <input hidden asp-for="ImageOfVideo" value="@Model.ImageOfVideo"/>
-        <input hidden asp-for="View" value="@Model.View"/>
-        <input hidden asp-for="isFinish" value="@Model.isFinish"/>
-        <input hidden asp-for="Time" value="@Model.Time"/>
+        <div asp-validation-summary="All"></div>
+        <input hidden asp-for="MovieId" value="@Model.MovieId" />
+        <input hidden asp-for="ImageOfVideo" value="@Model.ImageOfVideo" />
+        <input hidden asp-for="View" value="@Model.View" />
+        <input hidden asp-for="isFinish" value="@Model.isFinish" />
         <div class="row">
             <div class="col-sm-2 form-group">
                 <label asp-for="MovieName"></label>
@@ -44,6 +44,15 @@
                 <span asp-validation-for="CountryId" class="text-danger"></span>
             </div>
         </div>
+        <div class="form-group row">
+            <div class="col-sm-2 form-group">
+                <label asp-for="Time"></label>
+            </div>
+            <div class="col-10">
+                <input class="form-control" type="date" asp-for="Time">
+                <span asp-validation-for="Time" class="text-danger"></span>
+            </div>
+        </div>
         <div class="row">
             <div class="col-sm-2 form-group">
                 <label>Thể Loại</label>
@@ -60,7 +69,7 @@
                 </select>
             </div>
         </div>
-    
+
         <div class="row">
             <div class="col-sm-2 form-group">
                 <label asp-for="Image"></label>
@@ -71,7 +80,6 @@
                     <label class="custom-file-label" for="customFile">Chọn tệp</label>
                     <img src="/images/@Model.ImageOfVideo" id="imgShow" alt=" Your Image" style="margin-top: 10px; height: 300px; width:auto" />
                 </div>
-                <span asp-validation-for="Image" class="text-danger"></span>
 
             </div>
         </div>
@@ -89,4 +97,8 @@
 
 @section scripts{
     <script src="~/js/movie.js" asp-append-version="true"></script>
+<script>
+    let a = document.getElementById("MovieName").value;
+    console.log(a);
+</script>
 }

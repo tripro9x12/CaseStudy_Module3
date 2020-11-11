@@ -117,6 +117,7 @@ namespace TAnime.Controllers
         [HttpPost]
         public IActionResult Edit(EditMovieViewModel model)
         {
+            model.isFinish = bool.Parse(model.isFinish.ToString());
             if (ModelState.IsValid)
             {
                 var fileName = string.Empty;
@@ -141,7 +142,7 @@ namespace TAnime.Controllers
                     return RedirectToAction("Index", "Movie");
                 }
             }
-            return View();
+            return View(model);
         }
         [Route("Movie/Delete/{MovieId}")]
         public JsonResult Delete(int MovieId)
