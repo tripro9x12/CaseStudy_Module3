@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ using TAnime.Services_Repository;
 
 namespace TAnime.Controllers
 {
+    
     public class MovieController : Controller
     {
         private readonly IAnimeRepository animeRepository;

@@ -501,8 +501,8 @@ D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\Microsoft.Asp
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
-D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
-D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\User\Register.cshtml.g.cs
-D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\User\Login.cshtml.g.cs
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Home\IndexMovieOfFinish.cshtml.g.cs
 D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Home\IndexMovieOfView.cshtml.g.cs
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Account\Index.cshtml.g.cs
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+D:\C0520G1\CaseStudy_Module3\TAnime\TAnime\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs

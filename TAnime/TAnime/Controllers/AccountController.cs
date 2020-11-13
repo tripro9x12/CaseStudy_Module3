@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,13 +12,14 @@ using TAnime.Models.Identities;
 
 namespace TAnime.Controllers
 {
-    public class UserController : Controller
+    [AllowAnonymous]
+    public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly IWebHostEnvironment webHostEnvironment;
 
-        public UserController(UserManager<ApplicationUser> userManager,
+        public AccountController(UserManager<ApplicationUser> userManager,
                             SignInManager<ApplicationUser> signInManager,
                             IWebHostEnvironment webHostEnvironment)
         {
@@ -27,6 +29,7 @@ namespace TAnime.Controllers
         }
         
         [HttpGet]
+        [Route("/Account/Register")]
         public IActionResult Register()
         {
             return View();
@@ -41,7 +44,8 @@ namespace TAnime.Controllers
                     Email = model.Email,
                     UserName = model.Email,
                     Address = model.Address,
-                    City = model.City
+                    City = model.City,
+                    FullName = model.FullName
                 };
                 string fileName = string.Empty;
                 if (model.ImagePath != null)
@@ -59,7 +63,7 @@ namespace TAnime.Controllers
                 if (result.Succeeded)
                 {
                     await signInManager.SignInAsync(user: user, isPersistent: false);
-                    return RedirectToAction("Index", "User");
+                    return RedirectToAction("Index", "Account");
                 }
                 else
                 {
@@ -88,6 +92,7 @@ namespace TAnime.Controllers
             return View(model);
         }
         [HttpGet]
+        [Route("/Account/Login")]
         public IActionResult Login(string Url)
         {
             ViewBag.ReturnUrl = Url;
@@ -110,7 +115,7 @@ namespace TAnime.Controllers
                     {
                         return Redirect(model.ReturnUrl);
                     }
-                    return RedirectToAction("Index", "User");
+                    return RedirectToAction("Index", "Account");
                 }
                 else
                 {
@@ -127,7 +132,7 @@ namespace TAnime.Controllers
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
-            return RedirectToAction("Login", "User");
+            return RedirectToAction("Login", "Account");
         }
 
         [HttpPost]
@@ -138,7 +143,7 @@ namespace TAnime.Controllers
             var result = await userManager.ChangePasswordAsync(user, usermodel.oldPassword, usermodel.newPassword);
             if (!result.Succeeded)
             {
-                return RedirectToAction("Index", "User");
+                return RedirectToAction("Index", "Account");
             }
             return View();
         }

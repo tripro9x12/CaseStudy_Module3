@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Register User";
 }
-<form enctype="multipart/form-data" asp-controller="User" asp-action="Register" method="post" class="mt-2" runat="server">
+<form enctype="multipart/form-data" asp-controller="Account" asp-action="Register" method="post" class="mt-2" runat="server">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="row">
         <div class="col-sm-2 form-group">
@@ -33,6 +33,15 @@
     </div>
     <div class="row">
         <div class="col-sm-2 form-group">
+            <label asp-for="FullName"></label>
+        </div>
+        <div class="col-sm-10 form-group">
+            <input type="text" asp-for="FullName" class="form-control" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 form-group">
             <label asp-for="City"></label>
         </div>
         <div class="col-sm-10 form-group">
@@ -58,7 +67,7 @@
                 <input type="file" class="custom-file-input" id="imgChose" asp-for="ImagePath">
                 <label class="custom-file-label" for="customFile">Chọn tệp</label>
             </div>
-            <img src="#" id="imgShow" alt=" Your Image" style="margin-top: 10px;"/>
+            <img src="#" id="imgShow" alt=" Your Image" style="margin-top: 10px; height: 300px; width: auto" />
         </div>
     </div>
     <div class="row">

@@ -11,6 +11,8 @@ namespace TAnime.Models.Identities
     {
         [Required(ErrorMessage = "Email không được để trống")]
         public string Email { get; set; }
+        [Required(ErrorMessage = "FullName không được để trống")]
+        public string FullName { get; set; }
         [Required(ErrorMessage = "Mật khẩu không được để trống")]
         [DataType(DataType.Password)]
         [Display(Name ="Mật khẩu")]

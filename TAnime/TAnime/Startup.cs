@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,7 +34,13 @@ namespace TAnime
         {
             services.AddControllersWithViews();
             services.AddMvc(option =>
-                            option.EnableEndpointRouting = false);
+            {
+                option.EnableEndpointRouting = false;
+                var policy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+                option.Filters.Add(new AuthorizeFilter(policy));
+            });
             services.AddDbContext<AppDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("TAnimeDbManagement")));
             services.AddScoped<IAnimeRepository, AnimeRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -60,7 +68,8 @@ namespace TAnime
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
