@@ -1,0 +1,116 @@
+﻿@model List<UserViewModel>
+@inject SignInManager<ApplicationUser> signInManager
+@{
+    ViewBag.Title = "Quản lý tài khoản";
+}
+<h3>@ViewBag.Title</h3>
+<a class="btn btn-primary mb-3" asp-controller="User" asp-action="Create">Tạo Tài Khoản</a>
+<table class="table table-bordered table-hover mt-2" style="font-size: 12px !important" id="iduser">
+    <thead>
+        <tr class="thead-dark">
+            <th>UserId</th>
+            <th>Avatar</th>
+            <th>Email</th>
+            <th>FullName</th>
+            <th>City</th>
+            <th>Address</th>
+            <th>Roles</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+
+            if (signInManager.IsSignedIn(User))
+            {
+                if (User.IsInRole("System Admin"))
+                {
+                    @foreach (var user in Model)
+                    {
+                        if (user.RolesName == "System Admin")
+                        {
+                            <tr>
+                                <td>@user.UserId</td>
+                                <td class="text-center">
+                                    <img src="/avatars/@user.Avatar" alt="Null" style="width:45px; height:45px; border-radius: 100%;" />
+                                </td>
+                                <td>@user.Email</td>
+                                <td>@user.FullName</td>
+                                <td>@user.City</td>
+                                <td>@user.Address</td>
+                                <td>@user.RolesName</td>
+                                <td></td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td>@user.UserId</td>
+                                <td class="text-center">
+                                    <img src="/avatars/@user.Avatar" alt="Null" style="width:45px; height:45px; border-radius: 100%;" />
+                                </td>
+                                <td>@user.Email</td>
+                                <td>@user.FullName</td>
+                                <td>@user.City</td>
+                                <td>@user.Address</td>
+                                <td>@user.RolesName</td>
+
+                                <td>
+                                    <a asp-controller="User" asp-action="Edit" asp-route-id="@user.UserId" class="btn btn-warning" style="font-size: 10px;">Chỉnh sửa</a>
+                                    <a href="javascript:void(0)" class="btn btn-danger" onclick="user.delete('@user.UserId')" style="font-size: 10px;">Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+                if (User.IsInRole("Admin"))
+                {
+                    @foreach (var user in Model)
+                    {
+                        if (user.RolesName == "System Admin" || user.RolesName == "Admin")
+                        {
+                            <tr>
+                                <td>@user.UserId</td>
+                                <td class="text-center">
+                                    <img src="/avatars/@user.Avatar" alt="Null" style="width:45px; height:45px; border-radius: 100%;" />
+                                </td>
+                                <td>@user.Email</td>
+                                <td>@user.FullName</td>
+                                <td>@user.City</td>
+                                <td>@user.Address</td>
+                                <td>@user.RolesName</td>
+                                <td></td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td>@user.UserId</td>
+                                <td class="text-center">
+                                    <img src="/avatars/@user.Avatar" alt="Null" style="width:45px; height:45px; border-radius: 100%;" />
+                                </td>
+                                <td>@user.Email</td>
+                                <td>@user.FullName</td>
+                                <td>@user.City</td>
+                                <td>@user.Address</td>
+                                <td>@user.RolesName</td>
+
+                                <td>
+                                    <a asp-controller="User" asp-action="Edit" asp-route-id="@user.UserId" class="btn btn-warning" style="font-size: 10px;">Chỉnh sửa</a>
+                                    <a href="javascript:void(0)" class="btn btn-danger" onclick="user.delete('@user.UserId')" style="font-size: 10px;">Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+            }
+        }
+        </tbody>
+</table>
+
+
+@section Scripts{
+    <script src="~/lib/bootbox.js/bootbox.min.js"></script>
+    <script src="~/js/user.js" asp-append-version="true"></script>
+}

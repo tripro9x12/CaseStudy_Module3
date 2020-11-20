@@ -76,11 +76,32 @@ namespace TAnime.Controllers
         }
 
         public IActionResult Index(int? page)
-        {
+        {           
             int pageSize = 12;
             int pageNumber = (page ?? 1);
-            var movies = animeRepository.GetMovies().ToList().ToPagedList(pageNumber, pageSize);
+            var movies = animeRepository.GetMovies().ToList().ToPagedList(pageNumber, pageSize);        
             return View(movies);
+        }
+
+        public List<MovieViewModel> GetMovieIsNotFinish()
+        {
+            var isFinish = animeRepository.GetMovies().Where(m => m.IsFinish == false).ToList();
+            List<MovieViewModel> newmovies = new List<MovieViewModel>();
+            foreach (var item in isFinish)
+            {
+                if (newmovies.Count < 8)
+                {
+                    newmovies.Add(item);
+                }
+            }
+            return newmovies;
+        }
+        [HttpGet]
+        [Route("/Home/IndexOfSlides")]
+        public JsonResult IndexOfSlides()
+        {
+            var movies = GetMovieIsNotFinish();
+            return Json(new { data =  movies });
         }
 
 

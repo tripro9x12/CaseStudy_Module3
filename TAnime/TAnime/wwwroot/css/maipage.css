@@ -8,6 +8,27 @@
     text-decoration: none !important;
 }
 
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex !important;
+}
+
+.carousel-inner .carousel-item-right.active,
+.carousel-inner .carousel-item-next {
+    transform: translateX(10%) !important;
+}
+
+.carousel-inner .carousel-item-left.active,
+.carousel-inner .carousel-item-prev {
+    transform: translateX(-10%) !important;
+}
+
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left {
+    transform: translateX(0) !important;
+}
+
 
 .product {
     position: relative;
@@ -84,6 +105,19 @@
 @media screen and (max-width: 992px) {
     .product {
         width: 48% !important;
+    }
+    .carousel-inner div {
+        width: 100%;
+    }
+
+    .carousel-inner .carousel-item-right.active,
+    .carousel-inner .carousel-item-next {
+        transform: translateX(0%) !important;
+    }
+
+    .carousel-inner .carousel-item-left.active,
+    .carousel-inner .carousel-item-prev {
+        transform: translateX(-0%) !important;
     }
 }
 @media screen and (max-width: 442px) {

@@ -63,7 +63,7 @@ namespace TAnime.Controllers
                 if (result.Succeeded)
                 {
                     await signInManager.SignInAsync(user: user, isPersistent: false);
-                    return RedirectToAction("Index", "Account");
+                    return RedirectToAction("Index", "Movie");
                 }
                 else
                 {
@@ -115,7 +115,7 @@ namespace TAnime.Controllers
                     {
                         return Redirect(model.ReturnUrl);
                     }
-                    return RedirectToAction("Index", "Account");
+                    return RedirectToAction("Index", "Movie");
                 }
                 else
                 {
@@ -143,7 +143,7 @@ namespace TAnime.Controllers
             var result = await userManager.ChangePasswordAsync(user, usermodel.oldPassword, usermodel.newPassword);
             if (!result.Succeeded)
             {
-                return RedirectToAction("Index", "Account");
+                return RedirectToAction("Index", "Movie");
             }
             return View();
         }

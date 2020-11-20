@@ -1,0 +1,35 @@
+﻿@model List<RoleViewModel>
+@{
+    ViewBag.Title = "Quản lý phân quyền";
+}
+<h3>@ViewBag.Title</h3>
+<a asp-controller="Role" asp-action="Create" class="btn btn-warning" style="width:auto !important;">Thêm Quyền</a>
+<table class="table table-bordered table-hover mt-2">
+    <thead>
+        <tr class="bg-dark text-light">
+            <th>Id</th>
+            <th>Role Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var role in Model)
+            {
+                <tr>
+                    <td>@role.RoleId</td>
+                    <td>@role.RoleName</td>
+                    <td>
+                        <a asp-controller="Role" asp-action="Edit" asp-route-id="@role.RoleId" class="btn btn-warning">Chỉnh Sửa</a>
+                        <a href="javascript:void(0)" class="btn btn-danger btnn" onclick="role.delete('@role.RoleId')">Xóa</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+@section Scripts{
+    <script src="~/lib/bootbox.js/bootbox.min.js"></script>
+    <script src="~/js/role.js" asp-append-version="true"></script>
+} 
