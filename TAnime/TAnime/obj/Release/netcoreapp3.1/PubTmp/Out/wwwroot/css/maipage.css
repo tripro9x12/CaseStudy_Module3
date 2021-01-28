@@ -1,0 +1,94 @@
+﻿.new-update a {
+    color: #009688 !important;
+    padding: 4px 20px;
+    background: rgba(128, 128, 128,0.1);
+    font-size: 20px;
+}
+.new-update a:hover {
+    text-decoration: none !important;
+}
+
+
+.product {
+    position: relative;
+    height: 250px;
+    width: calc(100% - 10px);
+    overflow: hidden;
+    padding: 0 !important;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    border-radius: 6px;
+    width: 24% !important;
+}
+
+.product img {
+    height: 100%;
+    width: 100%;
+    margin-right: 5px;
+}
+.product a:after{
+    background: rgba(128, 128, 128,0.2);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    content: " ";
+    display: none;
+}
+.product:hover > a:after{
+    display: block;
+}
+.product a {
+    color: white;
+    width: 100%;
+}
+
+.product a:hover > img {
+    transform: scale(1.1);
+    transition: all 0.2s ease-out;
+}
+.product a:hover {
+    text-decoration: none;
+}
+
+.product a p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #ff6a00;
+    background: rgba(21,21,21,.63) !important;
+    width: 100%;
+    margin-bottom: 0 !important;
+    padding: 8px 0 8px 8px;
+}
+.overlay {
+    position: absolute;
+    width: 40px !important;
+    height: 40px !important;
+    top: 41%;
+    left: 40%;
+    display: none;
+    transition: all 0.2s ease-out;
+    z-index: 2;
+}
+.product a:hover > div .overlay {
+    display: block;
+    z-index: 2;
+}
+@media screen and (max-width: 1125px) {
+    .product{
+        width: 32% !important;
+    }
+}
+@media screen and (max-width: 992px) {
+    .product {
+        width: 48% !important;
+    }
+}
+@media screen and (max-width: 442px) {
+    .product {
+        width: 70% !important;
+        margin: 4px auto;
+    }
+}

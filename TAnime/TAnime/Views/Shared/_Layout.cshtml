@@ -7,10 +7,12 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="~/lib/font-awesome.js/css/all.css" rel="stylesheet" />
+    <link href="~/lib/slick-carousel/slick.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/css/homepage.css" rel="stylesheet" />
     <link href="~/css/maipage.css" rel="stylesheet" />
     <link href="~/css/pageList.css" rel="stylesheet" />
+
 </head>
 <body>
     <header>
@@ -23,12 +25,12 @@
                             <form asp-controller="Home" asp-action="Search" method="get" style="width: 100%;">
                                 <input class="form-control my-0 py-1 green-border" type="text" placeholder="Tìm kiếm....." aria-label="Search" id="searchString" name="searchString">
                                 <div class="input-group-append">
-                                 
+
                                     <button class="input-group-text red lighten-3" id="basic-text1" type="submit">
                                         <i class="fas fa-search text-grey"
-                                            aria-hidden="true"></i>
+                                           aria-hidden="true"></i>
                                     </button>
-                                   
+
                                 </div>
                             </form>
                         </li>
@@ -66,7 +68,7 @@
                                 <li><a href="/Home/IndexMovieOfFinish/0">Đang Tiến Hành</a></li>
                             </ul>
                         </li>
-                        <li><a href="~/Home/Index">Mới Cập Nhật</a></li>
+                        <li><a href="~/Home/NewMovies">Mới Cập Nhật</a></li>
                         <li><a href="~/Home/IndexMovieOfView">Xem Nhiều</a></li>
                     </ul>
 
@@ -90,7 +92,7 @@
             </div>
         </nav>
     </header>
-    
+
     <div style="background: #213342;">
         <div class="container pb-4 pl-4" style="background: #212529">
             <div class="row">
@@ -101,7 +103,7 @@
                 </div>
                 <div class="col-12 col-md-3 mt-5" id="category">
                     <h4>Thể Loại</h4>
-                    @foreach(var item in context.Categories)
+                    @foreach (var item in context.Categories)
                     {
                         <a href="~/Home/IndexMovieOfCateGory/@item.CategoryId">@item.categoryName</a>
                     }
@@ -121,6 +123,7 @@
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/slick-carousel/slick.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/font-awesome.js/js/all.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

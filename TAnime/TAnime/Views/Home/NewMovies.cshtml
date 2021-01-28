@@ -1,0 +1,26 @@
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@model IPagedList<MovieViewModel>
+@{
+    ViewData["Title"] = "Phim hoạt hình mới cập nhật";
+}
+
+<div class="row mt-3" style="box-sizing: border-box !important">
+    @foreach (var item in Model)
+    {
+        <div class="product">
+            <a asp-controller="Home" asp-action="Detail" asp-route-id="@item.MovieId" class="pr-2">
+                <img src="~/images/@item.ImageOfVideo" />
+                <div>
+                    <img src="~/images/overlays-video.png" class="overlay" />
+                </div>
+                <p class="pr-2" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; height: 35px ">@item.MovieName</p>
+            </a>
+        </div>
+    }
+</div>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+@section Scripts{
+    <script src="~/js/site.js" asp-append-version="true"></script>
+}

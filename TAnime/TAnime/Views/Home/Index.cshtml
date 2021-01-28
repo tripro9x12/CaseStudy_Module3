@@ -3,24 +3,21 @@
 @model IPagedList<MovieViewModel>
 @{
     ViewData["Title"] = "TAnime - Xem phim hoạt hình miễn phí";
+    var Slide = ViewBag.Slide;
 }
-<div class="text-center my-3">
-    <div class="row mx-auto my-auto">
-        <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
-            <div class="carousel-inner w-100 row" role="listbox">             
-                    
-                    
-            </div>
-                <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-slide="prev" style="z-index: 999">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#recipeCarousel" role="button" data-slide="next" style="z-index: 999">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+<div id="for-slick-slider" class="center" style="display:flex; width: 100% !important">
+    @foreach (var item in Slide)
+    {
+        <div class="product slide">
+            <a asp-controller="Home" asp-action="Detail" asp-route-id="@item.MovieId" class="pr-2">
+                <img src="~/images/@item.ImageOfVideo" />
+                @*<div>
+                    <img src="~/images/overlays-video.png" class="overlay" />
+                </div>*@
+                <p class="pr-2" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; height: 35px">@item.MovieName</p>
+            </a>
         </div>
-    </div>
+    }
 </div>
 
 <div class="new-update mt-4">
@@ -35,7 +32,7 @@
                 <div>
                     <img src="~/images/overlays-video.png" class="overlay" />
                 </div>
-                <p class="pr-2" style="overflow:hidden;height:35px">@item.MovieName</p>
+                <p class="pr-2" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; height: 35px ">@item.MovieName</p>
             </a>
         </div>
     }

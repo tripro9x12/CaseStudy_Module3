@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\C0520G1\publish</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="TAnimeDbManagement">
+      <Value>workstation id=tricodegym.mssql.somee.com%3bpacket size=4096%3buser id=trihuynhcg_SQLLogin_1%3bpwd=8c2dwyjlkw%3bdata source=tricodegym.mssql.somee.com%3bpersist security info=False%3binitial catalog=tricodegym</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="TAnime.Models.AppDbContext">
+      <Value>workstation id=tricodegym.mssql.somee.com%3bpacket size=4096%3buser id=trihuynhcg_SQLLogin_1%3bpwd=8c2dwyjlkw%3bdata source=tricodegym.mssql.somee.com%3bpersist security info=False%3binitial catalog=tricodegym</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

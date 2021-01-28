@@ -8,39 +8,22 @@
     text-decoration: none !important;
 }
 
-.carousel-inner .carousel-item.active,
-.carousel-inner .carousel-item-next,
-.carousel-inner .carousel-item-prev {
-    display: flex !important;
-}
 
-.carousel-inner .carousel-item-right.active,
-.carousel-inner .carousel-item-next {
-    transform: translateX(10%) !important;
-}
-
-.carousel-inner .carousel-item-left.active,
-.carousel-inner .carousel-item-prev {
-    transform: translateX(-10%) !important;
-}
-
-.carousel-inner .carousel-item-right,
-.carousel-inner .carousel-item-left {
-    transform: translateX(0) !important;
-}
 
 
 .product {
     position: relative;
     height: 250px;
-    width: calc(100% - 10px);
     overflow: hidden;
     padding: 0 !important;
     margin-bottom: 8px;
     margin-right: 8px;
     border-radius: 6px;
-    width: 24% !important;
+    width: 24%;
 }
+.slide{
+    width: 100% !important;
+ }
 
 .product img {
     height: 100%;
@@ -97,32 +80,51 @@
     display: block;
     z-index: 2;
 }
+
+.slick-prev, .slick-next{
+    font-size:30px;
+    color: white;
+    height:30px;
+    width: 30px;
+    border-radius: 100%;
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+}
+.slick-prev{
+    left: 10px !important;
+}
+.slick-next {
+    right: 0;
+}
+#for-slick-slider {
+    position: relative;
+    align-items: center;
+    margin-top: 20px;
+}
+
 @media screen and (max-width: 1125px) {
     .product{
-        width: 32% !important;
+        width: 32%;
+    }
+    .slide{
+        width: 100% !important;
     }
 }
 @media screen and (max-width: 992px) {
     .product {
-        width: 48% !important;
+        width: 48%;
     }
-    .carousel-inner div {
+    .slide{
         width: 100%;
-    }
-
-    .carousel-inner .carousel-item-right.active,
-    .carousel-inner .carousel-item-next {
-        transform: translateX(0%) !important;
-    }
-
-    .carousel-inner .carousel-item-left.active,
-    .carousel-inner .carousel-item-prev {
-        transform: translateX(-0%) !important;
     }
 }
 @media screen and (max-width: 442px) {
     .product {
-        width: 70% !important;
+        width: 70%;
         margin: 4px auto;
+    }
+    .slide{
+        width: 100% !important;
     }
 }

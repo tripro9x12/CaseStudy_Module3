@@ -1,65 +1,49 @@
-﻿var init = init || {};
-
-init.slideTransition = () =>{
-    $('#recipeCarousel').carousel({
-        interval: 2000
-    });
-
-    $('.carousel .carousel-item').each(function () {
-        var next = $(this).next();
-        if (!next.length) {
-            next = $(this).siblings(':first');
-        }
-        next.children(':first-child').clone().appendto($(this));
-
-        for (var i = 0; i < 2; i++) {
-            next = next.next();
-            if (!next.length) {
-                next = $(this).siblings(':first');
+﻿
+function RunSlide() {
+    $('.center').slick({
+        centerMode: true,
+        centerPadding: '0',
+        slidesToShow: 4,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '0',
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '0',
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '0',
+                    slidesToShow: 1
+                }
             }
-
-            next.children(':first-child').clone().appendto($(this));
-        }
+        ],
+        autoplay: true,
+        speed: 1000,
+        autoplaySpeed: 1000,
+        arrows: true,
+        prevArrow: '<div class="slick-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></div>',
+        nextArrow: '<div class="slick-next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>'
     });
 }
 
 
-init.slide = () =>{
-    $.ajax({
-        url: `/Home/IndexOfSlides`,
-        method: 'GET',
-        dataType: 'JSON',
-        success: (response) => {
-            //$('#recipeCarousel > .carousel-inner').empty();
-            $.each(response.data, (i, v) => {
-                console.log(v.MovieId);
-                $('#recipeCarousel > .carousel-inner').append(
-                    `   
-                        <div class="carousel-item product">
-                            <a href="/Home/Detail/${v.movieId}">
-                                <img class="d-block"
-                                     src="images/${v.imageOfVideo}">
-                                <div>
-                                    <img src="images/overlays-video.png" class="overlay" />
-                                </div>
-                                <p class="pr-2" style="overflow:hidden;height:35px">${v.movieName}</p>
-                            </a>
-                        </div>
-                    `
-                );
-            });
-            defaultActive();
-        }
-    });
-}
-
-
-function defaultActive() {
-    var ImgItem = document.querySelectorAll('.carousel-item')[0];
-    ImgItem.classList.add('active');
-}
 
 $(document).ready(() => {
-    init.slide();
-    init.slideTransition();
+    RunSlide();
 })
